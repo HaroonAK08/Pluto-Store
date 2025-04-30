@@ -1,0 +1,140 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/authSlice';
+import axios from 'axios';
+
+function AdminLoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    
+    try {
+      // Fetch users from json-server
+      const response = await axios.get('http://localhost:3001/users');
+      const users = response.data;
+      
+      // Find user with matching email and password
+      const user = users.find(
+        (user) => user.email === email && user.password === password
+      );
+      
+      if (user) {
+        // Check if user has admin role
+        if (user.role === 'admin') {
+          // Create user object without password for security
+          const userForAuth = {
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            role: user.role,
+            profilePicture: user.profilePicture,
+            lastLogin: new Date().toISOString()
+          };
+          
+          // Dispatch login action to Redux store
+          dispatch(login(userForAuth));
+          
+          // Save user to localStorage
+          localStorage.setItem('currentUser', JSON.stringify(userForAuth));
+          
+          // Add a slight delay to ensure state is updated before navigation
+          setTimeout(() => {
+            navigate('/admin');
+          }, 100);
+        } else {
+          setError('Access denied. Only admin users can login here.');
+        }
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      setError('Login failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div>
+      <h2 className="login-title">Admin Login</h2>
+      <p className="login-subtitle">Sign in with your admin credentials</p>
+      
+      {error && <div className="error-message">{error}</div>}
+      
+      <form className="login-form" onSubmit={handleSubmit}>
+        <div className="input-group stacked">
+          <div>
+            <label htmlFor="admin-email" className="sr-only">Email address</label>
+            <input
+              id="admin-email"
+              name="email"
+              type="email"
+              autoComplete="email"
+              required
+              className="form-input form-input-top"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="admin-password" className="sr-only">Password</label>
+            <input
+              id="admin-password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="form-input form-input-bottom"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="remember-forgot">
+          <div className="remember-me">
+            <input
+              id="admin-remember-me"
+              name="remember-me"
+              type="checkbox"
+              className="checkbox"
+            />
+            <label htmlFor="admin-remember-me" className="checkbox-label">
+              Remember me
+            </label>
+          </div>
+
+          <div>
+            <a href="#" className="forgot-password">
+              Forgot your password?
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            className="signin-button"
+            disabled={loading}
+          >
+            {loading ? 'Signing in...' : 'Sign in'}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+export default AdminLoginForm; 

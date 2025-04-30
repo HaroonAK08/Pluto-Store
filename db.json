@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@gmail.com",
+      "password": "pass@123",
+      "role": "admin",
+      "profilePicture": "https://randomuser.me/api/portraits/men/1.jpg",
+      "lastLogin": "2023-07-15T10:30:45Z"
+    },
+    {
+      "id": 2,
+      "name": "User",
+      "email": "user@gmail.com",
+      "password": "pass@123",
+      "role": "user",
+      "profilePicture": "https://randomuser.me/api/portraits/women/2.jpg",
+      "lastLogin": "2023-07-16T08:15:22Z"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Product 1",
+      "description": "This is the first product",
+      "price": 100,
+      "quantity": 10,
+      "image": "https://via.placeholder.com/150"
+    },
+    {
+      "id": 2,
+      "name": "Product 2",
+      "description": "This is the second product",
+      "price": 200,
+      "quantity": 20,
+      "image": "https://via.placeholder.com/150"
+    }
+  ]
+}

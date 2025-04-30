@@ -1,0 +1,128 @@
+.start-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.start-content {
+  max-width: 600px;
+  text-align: center;
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.start-title {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.start-description {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.start-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.login-options {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.start-button {
+  display: block;
+  padding: 12px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.admin-login {
+  background-color: #9c27b0;
+  color: white;
+  flex: 1;
+}
+
+.admin-login:hover {
+  background-color: #7b1fa2;
+}
+
+.user-login {
+  background-color: #4285f4;
+  color: white;
+  flex: 1;
+}
+
+.user-login:hover {
+  background-color: #3367d6;
+}
+
+.login {
+  background-color: #4285f4;
+  color: white;
+}
+
+.login:hover {
+  background-color: #3367d6;
+}
+
+.register {
+  background-color: #34a853;
+  color: white;
+}
+
+.register:hover {
+  background-color: #2e8b47;
+}
+
+.browse {
+  background-color: #fbbc05;
+  color: #333;
+}
+
+.browse:hover {
+  background-color: #f9a825;
+}
+
+.back-link-container {
+  margin-top: 20px;
+}
+
+.back-link {
+  color: #4285f4;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .start-title {
+    font-size: 2rem;
+  }
+  
+  .start-content {
+    padding: 25px;
+  }
+  
+  .login-options {
+    flex-direction: column;
+  }
+} 

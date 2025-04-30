@@ -1,0 +1,11 @@
+.main-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: calc(100vh - 70px); /* Subtract navbar height */
+}
+
+.main-content.no-navbar {
+  min-height: 100vh; /* Full viewport height when no navbar */
+  padding-top: 0;
+} 
