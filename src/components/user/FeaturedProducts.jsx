@@ -1,24 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 import AddToCartModal from "./AddToCartModal";
-import { mockProducts } from "../../data/mockProducts";
 import "../../styles/Home.css";
 
 const FeaturedProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch("/db.json");
+        const data = await response.json();
+        // Get only the first 6 products
+        setProducts(data.products.slice(0, 6));
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleAddToCartClick = (product) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
-  console.log(selectedProduct);
 
   const handleAddToCart = (quantity) => {
-    console.log("clicked");
     if (selectedProduct) {
       dispatch(
         addToCart({
@@ -31,6 +47,10 @@ const FeaturedProducts = () => {
     }
   };
 
+  if (loading) {
+    return <div className="loading">Loading products...</div>;
+  }
+
   return (
     <div className="featured-products-section">
       <div className="section-header">
@@ -41,7 +61,7 @@ const FeaturedProducts = () => {
       </div>
 
       <div className="products-grid">
-        {mockProducts.map((product) => (
+        {products.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image-container">
               <img
