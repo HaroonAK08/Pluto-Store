@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../store/cartSlice";
 import AddToCartModal from "./AddToCartModal";
+import { mockProducts } from "../../data/mockProducts";
 import "../../styles/Home.css";
 
-const FeaturedProducts = ({ products }) => {
+const FeaturedProducts = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
@@ -14,15 +15,14 @@ const FeaturedProducts = ({ products }) => {
     setSelectedProduct(product);
     setIsModalOpen(true);
   };
+  console.log(selectedProduct);
 
   const handleAddToCart = (quantity) => {
+    console.log("clicked");
     if (selectedProduct) {
       dispatch(
         addToCart({
-          id: selectedProduct.id,
-          name: selectedProduct.name,
-          price: selectedProduct.price,
-          image: selectedProduct.image,
+          product: selectedProduct,
           quantity: quantity,
         })
       );
@@ -41,7 +41,7 @@ const FeaturedProducts = ({ products }) => {
       </div>
 
       <div className="products-grid">
-        {products.map((product) => (
+        {mockProducts.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image-container">
               <img

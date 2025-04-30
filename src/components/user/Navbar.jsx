@@ -5,6 +5,7 @@ import "../../styles/Navbar.css";
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.auth);
+  const { totalQuantity } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -43,6 +44,9 @@ function Navbar() {
               <circle cx="20" cy="21" r="1"></circle>
               <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
             </svg>
+            {totalQuantity > 0 && (
+              <span className="cart-count">{totalQuantity}</span>
+            )}
           </Link>
           {currentUser ? (
             <div className="user-menu">
