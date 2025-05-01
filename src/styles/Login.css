@@ -172,13 +172,9 @@
 
 .register-link {
   font-weight: 500;
-  color: #6366f1;
   text-decoration: none;
 }
 
-.register-link:hover {
-  color: #4f46e5;
-}
 
 .error-message {
   color: #e53e3e;

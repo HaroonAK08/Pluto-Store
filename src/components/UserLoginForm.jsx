@@ -100,7 +100,7 @@ function UserLoginForm() {
           </div>
         </div>
 
-        <div className="remember-forgot">
+        {/* <div className="remember-forgot">
           <div className="remember-me">
             <input
               id="user-remember-me"
@@ -118,7 +118,7 @@ function UserLoginForm() {
               Forgot your password?
             </a>
           </div>
-        </div>
+        </div> */}
 
         <div>
           <button type="submit" className="signin-button" disabled={loading}>

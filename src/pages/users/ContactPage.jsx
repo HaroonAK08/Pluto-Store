@@ -1,11 +1,12 @@
 import React from 'react';
 import '../../styles/CategoriesPage.css';
+import ContactUs from '../../components/user/ContactUs';
 
 function ContactPage() {
 
   return (
 <>
-<h1>Contact</h1>
+<ContactUs />
 </>
   );
 }
