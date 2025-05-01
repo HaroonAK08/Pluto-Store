@@ -1,0 +1,242 @@
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 6%;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    background-color: #adabab;
+  }
+  
+  .hero-content {
+    flex: 1;
+    max-width: 600px;
+    z-index: 2;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    color: #212529;
+    line-height: 1.2;
+    animation: fadeInUp 0.8s ease-out;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #495057;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+  
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .cta-button {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cta-button.primary {
+    background-color: #3a86ff;
+    color: white;
+    box-shadow: 0 4px 14px rgba(58, 134, 255, 0.4);
+  }
+  
+  .cta-button.primary:hover {
+    background-color: #2a75f3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 134, 255, 0.5);
+  }
+  
+  .cta-button.secondary {
+    background-color: transparent;
+    color: #3a86ff;
+    border: 2px solid #3a86ff;
+  }
+  
+  .cta-button.secondary:hover {
+    background-color: rgba(58, 134, 255, 0.1);
+    transform: translateY(-2px);
+  }
+  
+  .hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeInRight 1s ease-out;
+  }
+  
+  .hero-image {
+    width: 100%;
+    max-width: 550px;
+    height: 450px;
+    background-image: url('https://images.unsplash.com/photo-1614314107768-6018061b5b72?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease;
+  }
+  
+  .hero-image:hover {
+    transform: translateY(-10px) scale(1.02);
+  }
+  
+  .discount-badge {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+    animation: pulse 2s infinite;
+    transform-origin: center;
+  }
+  
+  .discount-text {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+  }
+  
+  .discount-subtext {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .hero-section {
+      padding: 3rem 5%;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section {
+      flex-direction: column;
+      text-align: center;
+      padding: 3rem 5% 5rem;
+    }
+    
+    .hero-content {
+      margin-bottom: 3rem;
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    
+    .hero-cta {
+      justify-content: center;
+    }
+    
+    .hero-image-container {
+      width: 100%;
+    }
+    
+    .discount-badge {
+      width: 100px;
+      height: 100px;
+      padding: 1.25rem;
+    }
+    
+    .discount-text {
+      font-size: 1.5rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+    
+    .hero-cta {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .cta-button {
+      width: 100%;
+    }
+    
+    .discount-badge {
+      width: 80px;
+      height: 80px;
+      padding: 1rem;
+    }
+    
+    .discount-text {
+      font-size: 1.25rem;
+    }
+  }

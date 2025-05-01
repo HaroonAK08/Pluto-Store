@@ -1,11 +1,12 @@
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: #fff;
+  background-color: black;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  border: 1px solid #333;
 }
 
 .navbar-container {
@@ -31,7 +32,7 @@
 }
 
 .navbar-links a {
-  color: #555;
+  color: #adabab;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;

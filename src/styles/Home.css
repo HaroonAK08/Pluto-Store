@@ -33,7 +33,7 @@
 .section-title {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: #adabab;
   margin: 0;
 }
 
@@ -248,11 +248,11 @@
 }
 
 .product-card {
-  background-color: var(--bg-white);
   border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: var(--transition);
+  background: #adabab;
 }
 
 .product-card:hover {
@@ -462,9 +462,9 @@
 /* Testimonials Styles */
 .testimonials-section {
   margin-bottom: 4rem;
-  background-color: var(--bg-light);
   padding: 3rem 0;
   border-radius: var(--radius-lg);
+  background: #adabab;
 }
 
 .testimonials-slider {
@@ -484,7 +484,7 @@
 }
 
 .testimonial-content {
-  background-color: var(--bg-white);
+  background-color: #e2e2e2;
   padding: 2rem;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
@@ -707,11 +707,11 @@
 /* Home Banner Styles */
 .home-banner {
   display: flex;
-  background-color: var(--bg-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
   margin-bottom: 4rem;
   box-shadow: var(--shadow-lg);
+  background: #adabab
 }
 
 .banner-content {

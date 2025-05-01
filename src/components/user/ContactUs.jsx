@@ -6,7 +6,7 @@ const ContactUs = () => {
   const styles = {
     container: {
       minHeight: "100vh",
-      backgroundColor: "#f3f4f6",
+      backgroundColor: "black",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",

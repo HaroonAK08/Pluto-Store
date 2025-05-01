@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/Home.css';
+import '../../styles/Hero.css'; // Adjust the path as necessary
 
 const Hero = () => {
   return (
@@ -14,7 +14,8 @@ const Hero = () => {
         </div>
       </div>
       <div className="hero-image-container">
-        <div className="hero-image"></div>
+        <div className="hero-image">
+        </div>
         <div className="discount-badge">
           <span className="discount-text">20% OFF</span>
           <span className="discount-subtext">First Order</span>

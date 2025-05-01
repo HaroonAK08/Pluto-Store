@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-color: black;
   padding: 20px;
   font-family: 'Poppins', sans-serif;
   position: relative;
@@ -15,7 +15,7 @@
 .start-content {
   max-width: 600px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.85);
+  background: black;
   backdrop-filter: blur(10px);
   padding: 40px;
   border-radius: 20px;
@@ -40,7 +40,7 @@
 .start-description {
   font-size: 1.2rem;
   margin-bottom: 30px;
-  color: #555;
+  color: #adabab;
   line-height: 1.6;
   animation: fadeIn 0.8s ease-out forwards;
   animation-delay: 0.2s;

@@ -2,6 +2,7 @@
   /* max-width: 1200px; */
   margin: 0 auto;
   /* padding: 20px; */
+  background-color: black;
   min-height: calc(100vh - 70px); /* Subtract navbar height */
 }
 
