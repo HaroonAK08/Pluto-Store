@@ -1,59 +1,199 @@
-import React from 'react';
-import '../../styles/CategoriesPage.css';
-import AnimatedTooltip from '../../components/animations/AnimatedTooltip';
+import React from "react";
+import "../../styles/About.css";
+import { Linkedin } from "lucide-react";
 
-const people = [
-  {
-    id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    image:
-      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3387&q=80",
-  },
-  {
-    id: 2,
-    name: "Robert Johnson",
-    designation: "Product Manager",
-    image:
-      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 3,
-    name: "Jane Smith",
-    designation: "Data Scientist",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8YXZhdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    designation: "UX Designer",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: 5,
-    name: "Tyler Durden",
-    designation: "Soap Developer",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3540&q=80",
-  },
-  {
-    id: 6,
-    name: "Dora",
-    designation: "The Explorer",
-    image:
-      "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
-  },
-];
-function AboutPage() {
-
+const PortfolioPage = () => {
   return (
-<div className='flex flex-row items-center justify-center mb-10 w-full mt-12'>
-      <AnimatedTooltip items={people} />
+    <div className="container">
+      {/* Header Section */}
+      <header className="header">
+        <h1 className="brand">PlutoX</h1>
+        <div className="intro">
+          <h2>Hi, I'm Haroon Ahmad Khan</h2>
+          <p className="subtitle">
+            Passionate Developer & Creative Problem Solver
+          </p>
+          <p className="description">
+            Building digital experiences that blend creativity with technical
+            excellence. Welcome to my journey in the world of development.
+          </p>
+          <div className="header-buttons">
+            <button className="btn primary">My Projects</button>
+            <button className="btn secondary">Contact Me</button>
+          </div>
+        </div>
+        <div className="author-tag">-Haroon Ahmad Khan</div>
+      </header>
 
-</div>
+      {/* Vision Section */}
+      <section className="card vision-section">
+        <div className="section-icon">
+          <span className="icon">📝</span>
+        </div>
+        <h3>My Vision</h3>
+        <p>
+          I envision a digital landscape where technology empowers individuals
+          and organizations to achieve their fullest potential. As a developer,
+          I strive to create solutions that are not only functionally excellent
+          but also intuitive and accessible to all users.
+        </p>
+        <p>
+          Through PlutoX, I aim to push the boundaries of what's possible in web
+          development by combining cutting-edge technologies with thoughtful
+          design principles. My goal is to build applications that make a
+          meaningful impact and provide exceptional user experiences.
+        </p>
+      </section>
+
+      {/* Technical Expertise Section */}
+      <section className="expertise-section">
+        <h2 className="section-title">Technical Expertise</h2>
+        <p className="section-subtitle">
+          Armed with a diverse skill set, I specialize in creating robust and
+          scalable web applications.
+        </p>
+
+        <div className="expertise-cards">
+          {/* Frontend Development */}
+          <div className="card expertise-card">
+            <div className="card-icon">
+              <span className="icon">🌐</span>
+            </div>
+            <h3>Frontend Development</h3>
+            <div className="skills">
+              {[
+                "HTML",
+                "JavaScript",
+                "React",
+                "CSS",
+                "TypeScript",
+                "Tailwind",
+              ].map((skill, idx) => (
+                <span key={idx} className={`skill-tag ${skill.toLowerCase()}`}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Backend Development */}
+          <div className="card expertise-card">
+            <div className="card-icon">
+              <span className="icon">🔧</span>
+            </div>
+            <h3>Backend Development</h3>
+            <div className="skills">
+              {["Node.js", "Express", "MongoDB", "SQL", "REST API"].map(
+                (skill, idx) => (
+                  <span
+                    key={idx}
+                    className={`skill-tag ${skill
+                      .toLowerCase()
+                      .replace(/[\s\/.]/g, "")}`}
+                  >
+                    {skill}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          {/* Additional Skills */}
+          <div className="card expertise-card">
+            <div className="card-icon">
+              <span className="icon">🔍</span>
+            </div>
+            <h3>Additional Skills</h3>
+            <div className="skills">
+              {[
+                "UI/UX Design",
+                "Git",
+                "Responsive Design",
+                "Testing",
+                "Performance Optimization",
+              ].map((skill, idx) => (
+                <span
+                  key={idx}
+                  className={`skill-tag ${skill
+                    .toLowerCase()
+                    .replace(/\s|\/|-/g, "")}`}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Journey Section */}
+      <section className="journey-section">
+        <h2 className="section-title">My Journey</h2>
+        <p className="section-subtitle">
+          The path that led me to becoming the developer I am today.
+        </p>
+
+        <div className="journey-columns">
+          <div className="journey-column">
+            <h3>Education</h3>
+            <div className="journey-item">
+              <h4>Computer Science</h4>
+              <p>
+                With a strong foundation in computer science principles, I've
+                developed a deep understanding of algorithms, data structures,
+                and programming concepts. This academic background has guided my
+                approach to development.
+              </p>
+            </div>
+          </div>
+          <div className="journey-column">
+            <h3>Experience</h3>
+            <div className="journey-item">
+              <h4>Continuous Learning</h4>
+              <p>
+                I believe in the power of lifelong learning. With each project,
+                I challenge myself to explore new technologies and
+                methodologies, constantly upping my craft as a developer.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="contact-section">
+        <div className="contact-card connect">
+          <h3>Let's Connect</h3>
+          <p>
+            I'm always open to discussing new projects, creative ideas or
+            opportunities to be part of your vision.
+          </p>
+
+          <div className="contact-info">
+            <div className="contact-item">
+              <span className="contact-icon">✉️</span>
+              <span>haroonak88@gmail.com</span>
+            </div>
+            <div className="contact-item">
+              <span className="contact-icon">📞</span>
+              <span>+92 3267477287</span>
+            </div>
+            <div className="contact-item">
+              <a
+                href="https://www.linkedin.com/in/haroon-ahmad-khan-370703295"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:underline hover:text-blue-800"
+              >
+                <Linkedin size={20} />
+                LinkedIn Haroon Ahmad Khan
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   );
-}
+};
 
-export default AboutPage; 
+export default PortfolioPage;
