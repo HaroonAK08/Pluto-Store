@@ -21,112 +21,7 @@
   ],
   "products": [
     {
-      "id": 1,
-      "name": "iPhone 13 Pro",
-      "description": "Latest Apple smartphone with A15 Bionic chip",
-      "price": 999,
-      "quantity": 15,
-      "image": "https://images.unsplash.com/photo-1632661674596-79bd8e9d1a0f",
-      "categoryId": 1,
-      "categoryName": "Electronics",
-      "specifications": {
-        "color": "Graphite",
-        "storage": "256GB",
-        "screen": "6.1 inch Super Retina XDR"
-      }
-    },
-    {
-      "id": 2,
-      "name": "Samsung 4K Smart TV",
-      "description": "55-inch 4K UHD Smart LED TV",
-      "price": 799,
-      "quantity": 10,
-      "image": "https://images.unsplash.com/photo-1593784991095-a205069470b6",
-      "categoryId": 1,
-      "categoryName": "Electronics",
-      "specifications": {
-        "resolution": "4K UHD",
-        "screenSize": "55 inch",
-        "smartFeatures": "Yes"
-      }
-    },
-    {
-      "id": 3,
-      "name": "Sony Wireless Headphones",
-      "description": "Noise-cancelling wireless headphones",
-      "price": 299,
-      "quantity": 20,
-      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
-      "categoryId": 1,
-      "categoryName": "Electronics",
-      "specifications": {
-        "batteryLife": "30 hours",
-        "bluetooth": "5.0",
-        "noiseCancellation": "Active"
-      }
-    },
-    {
-      "id": 4,
-      "name": "MacBook Pro",
-      "description": "Powerful laptop for professionals",
-      "price": 1299,
-      "quantity": 8,
-      "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
-      "categoryId": 1,
-      "categoryName": "Electronics",
-      "specifications": {
-        "processor": "M1 Pro",
-        "ram": "16GB",
-        "storage": "512GB SSD"
-      }
-    },
-    {
-      "id": 5,
-      "name": "DJI Mini Drone",
-      "description": "Compact and lightweight drone for aerial photography",
-      "price": 449,
-      "quantity": 12,
-      "image": "https://images.unsplash.com/photo-1507582020474-9a35b7d455d9",
-      "categoryId": 1,
-      "categoryName": "Electronics",
-      "specifications": {
-        "weight": "249g",
-        "camera": "4K",
-        "flightTime": "30 minutes"
-      }
-    },
-    {
-      "id": 6,
-      "name": "Designer Handbag",
-      "description": "Luxury leather handbag with gold accents",
-      "price": 299,
-      "quantity": 10,
-      "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
-      "categoryId": 2,
-      "categoryName": "Fashion",
-      "specifications": {
-        "material": "Genuine Leather",
-        "color": "Black",
-        "size": "Medium"
-      }
-    },
-    {
-      "id": 7,
-      "name": "Men's Suit",
-      "description": "Classic fit wool blend suit",
-      "price": 399,
-      "quantity": 15,
-      "image": "https://images.unsplash.com/photo-1593032465175-481ac7f401a0",
-      "categoryId": 2,
-      "categoryName": "Fashion",
-      "specifications": {
-        "material": "Wool Blend",
-        "color": "Navy Blue",
-        "sizes": ["S", "M", "L", "XL"]
-      }
-    },
-    {
-      "id": 8,
+      "id": "8",
       "name": "Women's Dress",
       "description": "Elegant evening dress",
       "price": 199,
@@ -137,11 +32,16 @@
       "specifications": {
         "material": "Silk",
         "color": "Red",
-        "sizes": ["XS", "S", "M", "L"]
+        "sizes": [
+          "XS",
+          "S",
+          "M",
+          "L"
+        ]
       }
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Running Shoes",
       "description": "Lightweight running shoes with cushioning",
       "price": 129,
@@ -152,11 +52,17 @@
       "specifications": {
         "material": "Mesh",
         "color": "White/Black",
-        "sizes": ["7", "8", "9", "10", "11"]
+        "sizes": [
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ]
       }
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Winter Jacket",
       "description": "Waterproof winter jacket with thermal lining",
       "price": 249,
@@ -167,11 +73,16 @@
       "specifications": {
         "material": "Nylon",
         "color": "Black",
-        "sizes": ["S", "M", "L", "XL"]
+        "sizes": [
+          "S",
+          "M",
+          "L",
+          "XL"
+        ]
       }
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Smart Coffee Maker",
       "description": "WiFi-enabled coffee maker with app control",
       "price": 199,
@@ -181,12 +92,16 @@
       "categoryName": "Home",
       "specifications": {
         "capacity": "12 cups",
-        "features": ["WiFi", "App Control", "Timer"],
+        "features": [
+          "WiFi",
+          "App Control",
+          "Timer"
+        ],
         "color": "Stainless Steel"
       }
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Robot Vacuum",
       "description": "Smart robot vacuum with mapping technology",
       "price": 299,
@@ -196,12 +111,16 @@
       "categoryName": "Home",
       "specifications": {
         "batteryLife": "120 minutes",
-        "features": ["Mapping", "App Control", "Auto-dock"],
+        "features": [
+          "Mapping",
+          "App Control",
+          "Auto-dock"
+        ],
         "color": "Black"
       }
     },
     {
-      "id": 13,
+      "id": "13",
       "name": "Smart LED Lights",
       "description": "Color-changing smart LED light bulbs",
       "price": 49,
@@ -211,12 +130,16 @@
       "categoryName": "Home",
       "specifications": {
         "wattage": "9W",
-        "features": ["Color Changing", "App Control", "Voice Control"],
+        "features": [
+          "Color Changing",
+          "App Control",
+          "Voice Control"
+        ],
         "packSize": "4 bulbs"
       }
     },
     {
-      "id": 14,
+      "id": "14",
       "name": "Smart Door Lock",
       "description": "Fingerprint and app-controlled door lock",
       "price": 249,
@@ -225,13 +148,20 @@
       "categoryId": 3,
       "categoryName": "Home",
       "specifications": {
-        "features": ["Fingerprint", "App Control", "Keypad"],
-        "compatibility": ["iOS", "Android"],
+        "features": [
+          "Fingerprint",
+          "App Control",
+          "Keypad"
+        ],
+        "compatibility": [
+          "iOS",
+          "Android"
+        ],
         "color": "Silver"
       }
     },
     {
-      "id": 15,
+      "id": "15",
       "name": "Smart Thermostat",
       "description": "Learning thermostat with energy saving features",
       "price": 199,
@@ -240,13 +170,20 @@
       "categoryId": 3,
       "categoryName": "Home",
       "specifications": {
-        "features": ["Learning", "Energy Reports", "App Control"],
-        "compatibility": ["iOS", "Android"],
+        "features": [
+          "Learning",
+          "Energy Reports",
+          "App Control"
+        ],
+        "compatibility": [
+          "iOS",
+          "Android"
+        ],
         "color": "White"
       }
     },
     {
-      "id": 16,
+      "id": "16",
       "name": "Luxury Skincare Set",
       "description": "Complete skincare routine set",
       "price": 199,
@@ -255,13 +192,18 @@
       "categoryId": 4,
       "categoryName": "Beauty",
       "specifications": {
-        "items": ["Cleanser", "Toner", "Serum", "Moisturizer"],
+        "items": [
+          "Cleanser",
+          "Toner",
+          "Serum",
+          "Moisturizer"
+        ],
         "skinType": "All Types",
         "size": "Full Size"
       }
     },
     {
-      "id": 17,
+      "id": "17",
       "name": "Professional Makeup Kit",
       "description": "Complete makeup collection for professionals",
       "price": 299,
@@ -270,13 +212,18 @@
       "categoryId": 4,
       "categoryName": "Beauty",
       "specifications": {
-        "items": ["Foundation", "Eyeshadow", "Lipstick", "Mascara"],
+        "items": [
+          "Foundation",
+          "Eyeshadow",
+          "Lipstick",
+          "Mascara"
+        ],
         "colors": "Neutral Palette",
         "case": "Professional Case"
       }
     },
     {
-      "id": 18,
+      "id": "18",
       "name": "Hair Care Bundle",
       "description": "Premium hair care products set",
       "price": 149,
@@ -285,13 +232,18 @@
       "categoryId": 4,
       "categoryName": "Beauty",
       "specifications": {
-        "items": ["Shampoo", "Conditioner", "Hair Mask", "Serum"],
+        "items": [
+          "Shampoo",
+          "Conditioner",
+          "Hair Mask",
+          "Serum"
+        ],
         "hairType": "All Types",
         "size": "Full Size"
       }
     },
     {
-      "id": 19,
+      "id": "19",
       "name": "Fragrance Collection",
       "description": "Luxury perfume set",
       "price": 249,
@@ -300,13 +252,15 @@
       "categoryId": 4,
       "categoryName": "Beauty",
       "specifications": {
-        "items": ["3 Perfumes"],
+        "items": [
+          "3 Perfumes"
+        ],
         "size": "50ml each",
         "type": "Eau de Parfum"
       }
     },
     {
-      "id": 20,
+      "id": "20",
       "name": "Spa Gift Set",
       "description": "Luxury spa and wellness products",
       "price": 179,
@@ -315,13 +269,18 @@
       "categoryId": 4,
       "categoryName": "Beauty",
       "specifications": {
-        "items": ["Bath Salts", "Body Scrub", "Massage Oil", "Candles"],
+        "items": [
+          "Bath Salts",
+          "Body Scrub",
+          "Massage Oil",
+          "Candles"
+        ],
         "fragrance": "Lavender",
         "giftBox": "Included"
       }
     },
     {
-      "id": 21,
+      "id": "21",
       "name": "Mountain Bike",
       "description": "Professional grade mountain bike",
       "price": 899,
@@ -336,7 +295,7 @@
       }
     },
     {
-      "id": 22,
+      "id": "22",
       "name": "Camping Tent",
       "description": "4-person waterproof camping tent",
       "price": 299,
@@ -351,7 +310,7 @@
       }
     },
     {
-      "id": 23,
+      "id": "23",
       "name": "Fishing Rod Set",
       "description": "Complete fishing equipment set",
       "price": 199,
@@ -362,11 +321,15 @@
       "specifications": {
         "length": "6 feet",
         "material": "Carbon Fiber",
-        "includes": ["Rod", "Reel", "Tackle Box"]
+        "includes": [
+          "Rod",
+          "Reel",
+          "Tackle Box"
+        ]
       }
     },
     {
-      "id": 24,
+      "id": "24",
       "name": "Hiking Boots",
       "description": "Waterproof hiking boots",
       "price": 159,
@@ -377,11 +340,17 @@
       "specifications": {
         "material": "Leather",
         "waterproof": "Yes",
-        "sizes": ["7", "8", "9", "10", "11"]
+        "sizes": [
+          "7",
+          "8",
+          "9",
+          "10",
+          "11"
+        ]
       }
     },
     {
-      "id": 25,
+      "id": "25",
       "name": "Yoga Mat Set",
       "description": "Premium yoga mat with accessories",
       "price": 79,
@@ -392,11 +361,15 @@
       "specifications": {
         "thickness": "6mm",
         "material": "Eco-friendly",
-        "includes": ["Mat", "Strap", "Block"]
+        "includes": [
+          "Mat",
+          "Strap",
+          "Block"
+        ]
       }
     },
     {
-      "id": 26,
+      "id": "26",
       "name": "Educational Robot Kit",
       "description": "STEM learning robot for kids",
       "price": 149,
@@ -406,12 +379,15 @@
       "categoryName": "Toys & Kids",
       "specifications": {
         "ageRange": "8-14 years",
-        "features": ["Programmable", "Educational"],
+        "features": [
+          "Programmable",
+          "Educational"
+        ],
         "batteries": "Included"
       }
     },
     {
-      "id": 27,
+      "id": "27",
       "name": "Building Blocks Set",
       "description": "Creative construction toy set",
       "price": 79,
@@ -426,7 +402,7 @@
       }
     },
     {
-      "id": 28,
+      "id": "28",
       "name": "Art Set",
       "description": "Complete art supplies for kids",
       "price": 49,
@@ -435,13 +411,18 @@
       "categoryId": 6,
       "categoryName": "Toys & Kids",
       "specifications": {
-        "items": ["Paints", "Brushes", "Paper", "Pencils"],
+        "items": [
+          "Paints",
+          "Brushes",
+          "Paper",
+          "Pencils"
+        ],
         "ageRange": "6-12 years",
         "case": "Included"
       }
     },
     {
-      "id": 29,
+      "id": "29",
       "name": "Musical Toy Set",
       "description": "Educational musical instruments for kids",
       "price": 69,
@@ -450,13 +431,17 @@
       "categoryId": 6,
       "categoryName": "Toys & Kids",
       "specifications": {
-        "instruments": ["Xylophone", "Tambourine", "Maracas"],
+        "instruments": [
+          "Xylophone",
+          "Tambourine",
+          "Maracas"
+        ],
         "ageRange": "3-8 years",
         "material": "Child-safe"
       }
     },
     {
-      "id": 30,
+      "id": "30",
       "name": "Science Kit",
       "description": "Fun science experiments for kids",
       "price": 89,
@@ -471,7 +456,7 @@
       }
     },
     {
-      "id": 31,
+      "id": "31",
       "name": "Bestselling Novel",
       "description": "Award-winning fiction novel",
       "price": 19.99,
@@ -486,7 +471,7 @@
       }
     },
     {
-      "id": 32,
+      "id": "32",
       "name": "Cookbook Collection",
       "description": "Gourmet recipes from world-class chefs",
       "price": 39.99,
@@ -501,7 +486,7 @@
       }
     },
     {
-      "id": 33,
+      "id": "33",
       "name": "Children's Book Set",
       "description": "Educational books for young readers",
       "price": 29.99,
@@ -516,7 +501,7 @@
       }
     },
     {
-      "id": 34,
+      "id": "34",
       "name": "Self-Help Book",
       "description": "Personal development guide",
       "price": 24.99,
@@ -528,21 +513,6 @@
         "format": "Paperback",
         "pages": "256",
         "language": "English"
-      }
-    },
-    {
-      "id": 35,
-      "name": "Art Book",
-      "description": "Coffee table art book",
-      "price": 49.99,
-      "quantity": 20,
-      "image": "https://images.unsplash.com/photo-1532012197267-da84d127e765",
-      "categoryId": 7,
-      "categoryName": "Books",
-      "specifications": {
-        "format": "Hardcover",
-        "pages": "200",
-        "images": "Full color"
       }
     }
   ],

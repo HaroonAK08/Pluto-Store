@@ -20,8 +20,9 @@ function ProductManagement() {
       setError("Not Found");
     }
   };
-
+  console.log("products", products[0]);
   const handleDelete = async (productId) => {
+    console.log("productId", productId);
     if (window.confirm("Are you sure you want to delete this product?")) {
       try {
         await axios.delete(`http://localhost:3002/products/${productId}`);
