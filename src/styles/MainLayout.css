@@ -1,11 +1,10 @@
 .main-content {
-  /* max-width: 1200px; */
   margin: 0 auto;
-  /* padding: 20px; */
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   min-height: calc(100vh - 70px); /* Subtract navbar height */
 }
 
 .main-content.no-navbar {
   min-height: 100vh; /* Full viewport height when no navbar */
   padding-top: 0;
-} 
+}

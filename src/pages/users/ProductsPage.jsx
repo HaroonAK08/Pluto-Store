@@ -57,7 +57,6 @@ function ProductsPage() {
       <div className="products-header">
         <div className="header-content">
           <h1>All Products</h1>
-          <p>Browse our complete collection of products</p>
         </div>
         <div className="search-container">
           <input

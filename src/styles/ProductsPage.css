@@ -12,7 +12,7 @@
 }
 
 .header-content {
-  width: 100%;
+  /* width: 100%; */
   margin-bottom: 1rem;
 }
 
@@ -223,9 +223,11 @@
 .search-container {
   width: 300px;
   position: absolute;
-  right: 2rem;
   top: 100%;
   margin-top: -10px;
+  align-items: start;
+  justify-content: left;
+  display: flex;
 }
 
 .search-input {

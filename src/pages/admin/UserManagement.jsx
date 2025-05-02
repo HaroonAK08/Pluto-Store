@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/AdminPages.css";
+import axios from "axios";
 
 function UserManagement() {
   const [users, setUsers] = useState([]);
@@ -15,6 +16,9 @@ function UserManagement() {
   const handleDelete = async (userId) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
+        // Delete user from the database
+        await axios.delete(`http://localhost:3002/users/${userId}`);
+        // Update the local state after successful deletion
         setUsers(users.filter((user) => user.id !== userId));
         alert("User deleted successfully");
       } catch (error) {

@@ -9,7 +9,6 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
     price: "",
     quantity: "",
     description: "",
-    image: null,
     specifications: {
       format: "",
       pages: "",
@@ -18,7 +17,6 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
   });
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
 
   useEffect(() => {
     fetchCategories();
@@ -36,11 +34,8 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
   if (!isOpen) return null;
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "image" && files[0]) {
-      setForm((prev) => ({ ...prev, image: files[0] }));
-      setImagePreview(URL.createObjectURL(files[0]));
-    } else if (name === "categoryId") {
+    const { name, value } = e.target;
+    if (name === "categoryId") {
       const selectedCategory = categories.find((cat) => cat.id === value);
       setForm((prev) => ({
         ...prev,
@@ -65,36 +60,13 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      !form.name ||
-      !form.categoryId ||
-      !form.price ||
-      !form.quantity ||
-      !form.image
-    ) {
-      setError("Name, category, price, quantity, and image are required.");
+    if (!form.name || !form.categoryId || !form.price || !form.quantity) {
+      setError("Name, category, price, and quantity are required.");
       return;
     }
 
-    const formData = new FormData();
-    Object.keys(form).forEach((key) => {
-      if (key === "specifications") {
-        formData.append(key, JSON.stringify(form[key]));
-      } else {
-        formData.append(key, form[key]);
-      }
-    });
-
     try {
-      const response = await axios.post(
-        "http://localhost:3002/products",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post("http://localhost:3002/products", form);
       onAdd(response.data);
       onClose();
     } catch (error) {
@@ -182,25 +154,6 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
                 placeholder="Enter product description"
                 required
               />
-            </div>
-
-            <div className="form-group full-width">
-              <label>Product Image *</label>
-              <div className="image-upload-container">
-                <input
-                  type="file"
-                  name="image"
-                  onChange={handleChange}
-                  accept="image/*"
-                  className="image-input"
-                  required
-                />
-                {imagePreview && (
-                  <div className="image-preview">
-                    <img src={imagePreview} alt="Preview" />
-                  </div>
-                )}
-              </div>
             </div>
 
             <div className="form-group full-width">

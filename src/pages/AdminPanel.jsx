@@ -20,9 +20,10 @@ function AdminPanel() {
         const totalProducts = data.products.length;
         const totalOrders = data.orders.length;
         const totalRevenue = data.orders.reduce(
-          (sum, order) => sum + order.totalAmount,
+          (sum, order) => sum + order.totalAmount || order.total,
           0
         );
+        console.log("data", data.orders);
 
         setStats({
           users: totalUsers,
@@ -33,7 +34,7 @@ function AdminPanel() {
       })
       .catch((error) => console.error("Error fetching stats:", error));
   }, []);
-
+  console.log("stats", stats);
   return (
     <div className="admin-dashboard">
       <div className="admin-stats-row">

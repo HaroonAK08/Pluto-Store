@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/About.css";
 import { Linkedin } from "lucide-react";
+import authorImage from "../../assets/Haroon.jpg";
 
 const PortfolioPage = () => {
   return (
@@ -8,21 +9,28 @@ const PortfolioPage = () => {
       {/* Header Section */}
       <header className="header">
         <h1 className="brand">PlutoX</h1>
-        <div className="intro">
-          <h2>Hi, I'm Haroon Ahmad Khan</h2>
-          <p className="subtitle">
-            Passionate Developer & Creative Problem Solver
-          </p>
-          <p className="description">
-            Building digital experiences that blend creativity with technical
-            excellence. Welcome to my journey in the world of development.
-          </p>
-          <div className="header-buttons">
-            <button className="btn primary">My Projects</button>
-            <button className="btn secondary">Contact Me</button>
+        <div className="header-content">
+          <div className="intro">
+            <h2>Hi, I'm Haroon Ahmad Khan</h2>
+            <p className="subtitle">
+              Passionate Developer & Creative Problem Solver
+            </p>
+            <p className="description">
+              Building digital experiences that blend creativity with technical
+              excellence. Welcome to my journey in the world of development.
+            </p>
+            <div className="header-buttons">
+              <button className="btn primary">My Projects</button>
+              <button className="btn secondary">Contact Me</button>
+            </div>
           </div>
+          <img
+            src={authorImage}
+            alt="Haroon Ahmad Khan"
+            className="author-image"
+          />
         </div>
-        <div className="author-tag">-Haroon Ahmad Khan</div>
+        {/* <div className="author-tag">-Haroon Ahmad Khan</div> */}
       </header>
 
       {/* Vision Section */}
