@@ -87,7 +87,6 @@ function ProductsPage() {
                   alt={product.name}
                   className="product-image"
                 />
-                <div className="product-overlay"></div>
               </div>
               <div className="product-info">
                 <Link to={`/product/${product.id}`} className="product-link">
