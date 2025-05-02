@@ -1,0 +1,168 @@
+/* Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal Container */
+.modal-content.checkout-modal {
+  background: #ffffff;
+  padding: 2rem;
+  height: 70%;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+  font-family: "Segoe UI", sans-serif;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.modal-content.checkout-modal::-webkit-scrollbar {
+  display: none;
+}
+
+/* Close Button */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #333;
+}
+
+/* Headings */
+.checkout-modal h2,
+.checkout-modal h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #444;
+  font-weight: 600;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+}
+
+/* Payment Method Section */
+.payment-method {
+  margin: 1.5rem 0;
+}
+.payment-option {
+  display: flex;
+  align-items: center;
+  background-color: #4d739b;
+  border-radius: 10px;
+  justify-content: center;
+  padding: 10px;
+}
+.payment-option input[type="radio"] {
+  margin-right: 8px;
+}
+.payment-option label {
+  color: white;
+  font-weight: 500;
+}
+
+/* Order Summary */
+.order-summary {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Confirm Button */
+.confirm-order-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.confirm-order-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .modal-content.checkout-modal {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .confirm-order-btn {
+    font-size: 1rem;
+  }
+}

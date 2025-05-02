@@ -1,9 +1,38 @@
-// import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 // import { useSelector } from "react-redux";
 import "../styles/AdminPanel.css";
 
 function AdminPanel() {
-  // const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const [stats, setStats] = useState({
+    users: 0,
+    products: 0,
+    orders: 0,
+    revenue: 0,
+  });
+
+  useEffect(() => {
+    // Fetch data from db.json
+    fetch("/db.json")
+      .then((response) => response.json())
+      .then((data) => {
+        // Calculate stats
+        const totalUsers = data.users.length;
+        const totalProducts = data.products.length;
+        const totalOrders = data.orders.length;
+        const totalRevenue = data.orders.reduce(
+          (sum, order) => sum + order.totalAmount,
+          0
+        );
+
+        setStats({
+          users: totalUsers,
+          products: totalProducts,
+          orders: totalOrders,
+          revenue: totalRevenue,
+        });
+      })
+      .catch((error) => console.error("Error fetching stats:", error));
+  }, []);
 
   return (
     <div className="admin-dashboard">
@@ -12,8 +41,7 @@ function AdminPanel() {
           <div className="admin-stat-icon users">👥</div>
           <div className="admin-stat-info">
             <h3>Total Users</h3>
-            <p className="admin-stat-value">1,254</p>
-            <p className="admin-stat-change positive">+12% this month</p>
+            <p className="admin-stat-value">{stats.users}</p>
           </div>
         </div>
 
@@ -21,8 +49,7 @@ function AdminPanel() {
           <div className="admin-stat-icon products">📦</div>
           <div className="admin-stat-info">
             <h3>Products</h3>
-            <p className="admin-stat-value">532</p>
-            <p className="admin-stat-change positive">+8% this month</p>
+            <p className="admin-stat-value">{stats.products}</p>
           </div>
         </div>
 
@@ -30,8 +57,7 @@ function AdminPanel() {
           <div className="admin-stat-icon orders">🛒</div>
           <div className="admin-stat-info">
             <h3>Orders</h3>
-            <p className="admin-stat-value">256</p>
-            <p className="admin-stat-change positive">+24% this month</p>
+            <p className="admin-stat-value">{stats.orders}</p>
           </div>
         </div>
 
@@ -39,8 +65,9 @@ function AdminPanel() {
           <div className="admin-stat-icon revenue">💰</div>
           <div className="admin-stat-info">
             <h3>Revenue</h3>
-            <p className="admin-stat-value">$45,260</p>
-            <p className="admin-stat-change positive">+18% this month</p>
+            <p className="admin-stat-value">
+              ${stats.revenue.toLocaleString()}
+            </p>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Admin",
       "email": "admin@gmail.com",
       "password": "pass@123",
@@ -10,13 +10,98 @@
       "lastLogin": "2023-07-15T10:30:45Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "User",
       "email": "user@gmail.com",
       "password": "pass@123",
       "role": "user",
       "profilePicture": "https://randomuser.me/api/portraits/women/2.jpg",
       "lastLogin": "2023-07-16T08:15:22Z"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "date": "2024-03-15T10:30:00Z",
+      "status": "completed",
+      "total": 299.99,
+      "items": [
+        {
+          "id": 1,
+          "name": "Wireless Headphones",
+          "price": 199.99,
+          "quantity": 1,
+          "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+        },
+        {
+          "id": 2,
+          "name": "Phone Case",
+          "price": 49.99,
+          "quantity": 2,
+          "image": "https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=500"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "date": "2024-03-10T15:45:00Z",
+      "status": "pending",
+      "total": 149.99,
+      "items": [
+        {
+          "id": 3,
+          "name": "Smart Watch",
+          "price": 149.99,
+          "quantity": 1,
+          "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+        }
+      ]
+    },
+    {
+      "id": "75ef",
+      "name": "d",
+      "address": "d",
+      "phone": "d",
+      "email": "user@gmail.com",
+      "totalAmount": 129,
+      "paymentMethod": "Cash on Delivery",
+      "orderNumber": "ORD-1746211446241",
+      "status": "Pending",
+      "paymentStatus": "Pending",
+      "date": "2025-05-02T18:44:06.241Z",
+      "items": [
+        {
+          "id": "9",
+          "name": "Running Shoes",
+          "price": 129,
+          "quantity": 1,
+          "totalPrice": 129
+        }
+      ]
+    },
+    {
+      "id": "62f1",
+      "name": "s",
+      "address": "s",
+      "phone": "sa",
+      "email": "user@gmail.com",
+      "totalAmount": 249,
+      "paymentMethod": "Cash on Delivery",
+      "orderNumber": "ORD-1746211968706",
+      "status": "Pending",
+      "paymentStatus": "Pending",
+      "date": "2025-05-02T18:52:48.706Z",
+      "items": [
+        {
+          "id": "10",
+          "name": "Winter Jacket",
+          "price": 249,
+          "quantity": 1,
+          "totalPrice": 249
+        }
+      ]
     }
   ],
   "products": [
@@ -518,49 +603,49 @@
   ],
   "categories": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Electronics",
       "description": "Latest gadgets and electronic devices",
       "image": "https://images.unsplash.com/photo-1498049794561-7780e7231661",
       "slug": "electronics"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Fashion",
       "description": "Trendy clothing and accessories",
       "image": "https://images.unsplash.com/photo-1445205170230-053b83016050",
       "slug": "fashion"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Home",
       "description": "Smart home devices and appliances",
       "image": "https://images.unsplash.com/photo-1484101403633-562f891dc89a",
       "slug": "home"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Beauty",
       "description": "Skincare, makeup, and beauty products",
       "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348",
       "slug": "beauty"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Sports & Outdoors",
       "description": "Sports equipment and outdoor gear",
       "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
       "slug": "sports-outdoors"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Toys & Kids",
       "description": "Educational toys and children's products",
       "image": "https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55",
       "slug": "toys-kids"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Books",
       "description": "Fiction, non-fiction, and educational books",
       "image": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",

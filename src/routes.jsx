@@ -13,9 +13,11 @@ import AdminSettings from "./pages/admin/AdminSettings";
 import CategoryPage from "./pages/CategoryPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import ProductsPage from "./pages/users/ProductsPage";
+import ProductDetailsPage from "./pages/users/ProductDetailsPage";
 import AboutPage from "./pages/users/AboutPage";
 import ContactPage from "./pages/users/ContactPage";
 import Cart from "./pages/Cart";
+import OrdersPage from "./pages/OrdersPage";
 // Auth guard HOC for protected routes
 const RequireAuth = ({ children, isAuthenticated, redirectTo = "/login" }) => {
   return isAuthenticated ? children : <Navigate to={redirectTo} />;
@@ -45,6 +47,14 @@ const getRoutes = (isAuthenticated, user) => [
         element: (
           <RequireAuth isAuthenticated={isAuthenticated}>
             <ProductsPage />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "product/:id",
+        element: (
+          <RequireAuth isAuthenticated={isAuthenticated}>
+            <ProductDetailsPage />
           </RequireAuth>
         ),
       },
@@ -110,6 +120,14 @@ const getRoutes = (isAuthenticated, user) => [
         element: (
           <RequireAuth isAuthenticated={isAuthenticated}>
             <CategoryPage />
+          </RequireAuth>
+        ),
+      },
+      {
+        path: "orders",
+        element: (
+          <RequireAuth isAuthenticated={isAuthenticated}>
+            <OrdersPage />
           </RequireAuth>
         ),
       },

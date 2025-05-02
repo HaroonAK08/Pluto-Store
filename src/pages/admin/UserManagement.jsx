@@ -1,12 +1,37 @@
-import React from 'react';
-import '../../styles/AdminPages.css';
+import React, { useState, useEffect } from "react";
+import "../../styles/AdminPages.css";
 
 function UserManagement() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Fetch users from db.json
+    fetch("/db.json")
+      .then((response) => response.json())
+      .then((data) => setUsers(data.users))
+      .catch((error) => console.error("Error fetching users:", error));
+  }, []);
+
+  const handleDelete = async (userId) => {
+    if (window.confirm("Are you sure you want to delete this user?")) {
+      try {
+        setUsers(users.filter((user) => user.id !== userId));
+        alert("User deleted successfully");
+      } catch (error) {
+        console.error("Error deleting user:", error);
+        alert("Failed to delete user");
+      }
+    }
+  };
+
   return (
     <div className="admin-page">
       <h1>User Management</h1>
-      <p>This is the user management page. Here administrators can view, add, edit, and delete users.</p>
-      
+      <p>
+        This is the user management page. Here administrators can view, add,
+        edit, and delete users.
+      </p>
+
       <div className="admin-card">
         <h2>User List</h2>
         <table className="admin-table">
@@ -16,33 +41,28 @@ function UserManagement() {
               <th>Name</th>
               <th>Email</th>
               <th>Role</th>
-              <th>Status</th>
+              <th>Last Login</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>John Doe</td>
-              <td>john@example.com</td>
-              <td>User</td>
-              <td>Active</td>
-              <td>
-                <button className="table-btn edit">Edit</button>
-                <button className="table-btn delete">Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jane Smith</td>
-              <td>jane@example.com</td>
-              <td>Admin</td>
-              <td>Active</td>
-              <td>
-                <button className="table-btn edit">Edit</button>
-                <button className="table-btn delete">Delete</button>
-              </td>
-            </tr>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.name}</td>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
+                <td>{new Date(user.lastLogin).toLocaleDateString()}</td>
+                <td>
+                  <button
+                    className="table-btn delete"
+                    onClick={() => handleDelete(user.id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -50,4 +70,4 @@ function UserManagement() {
   );
 }
 
-export default UserManagement; 
+export default UserManagement;

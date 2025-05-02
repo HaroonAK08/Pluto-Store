@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../../styles/AdminPages.css";
+import AddProductModal from "../../components/AddProductModal";
 
 function ProductManagement() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     fetchProducts();
@@ -36,6 +38,21 @@ function ProductManagement() {
     }
   };
 
+  const handleAddProduct = async (product) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3002/products",
+        product
+      );
+      setProducts((prev) => [...prev, response.data]);
+      setIsModalOpen(false);
+      setError(null);
+    } catch (error) {
+      console.error("Error adding product:", error);
+      setError("Failed to add product.");
+    }
+  };
+
   return (
     <div className="admin-page">
       <h1>Product Management</h1>
@@ -43,6 +60,16 @@ function ProductManagement() {
         This is the product management page. Here administrators can view, add,
         edit, and delete products.
       </p>
+
+      <div className="add-product-section">
+        <button
+          className="add-product-button"
+          onClick={() => setIsModalOpen(true)}
+        >
+          <span className="plus-icon">+</span>
+          <span className="button-text">Add New Product</span>
+        </button>
+      </div>
 
       <div className="admin-card">
         <h2>Product List</h2>
@@ -67,7 +94,6 @@ function ProductManagement() {
                 <td>${product.price}</td>
                 <td>{product.quantity}</td>
                 <td>
-                  <button className="table-btn edit">Edit</button>
                   <button
                     className="table-btn delete"
                     onClick={() => handleDelete(product.id)}
@@ -80,6 +106,11 @@ function ProductManagement() {
           </tbody>
         </table>
       </div>
+      <AddProductModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddProduct}
+      />
     </div>
   );
 }

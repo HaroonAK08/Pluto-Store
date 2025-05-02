@@ -113,7 +113,6 @@ function ProductsPage() {
                 <div className="product-actions">
                   <button
                     className="add-to-cart-button"
-                    style={{ backgroundColor: "black", color: "red" }}
                     onClick={() => handleAddToCart(product.id)}
                   >
                     Add to Cart

@@ -1,15 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../store/authSlice";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import "../../styles/Navbar.css";
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.auth);
   const { totalQuantity } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch(logout());
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
   };
 
   return (
@@ -50,7 +56,7 @@ function Navbar() {
           </Link>
           {currentUser ? (
             <div className="user-menu">
-              <div className="user-avatar">
+              <div className="user-avatar" onClick={toggleDropdown}>
                 <img
                   src={currentUser.profilePicture}
                   alt={currentUser.name}
@@ -58,16 +64,18 @@ function Navbar() {
                 />
                 <span className="user-name">{currentUser.name}</span>
               </div>
-              <div className="dropdown-menu">
-                <Link to="/profile">My Profile</Link>
-                <Link to="/orders">My Orders</Link>
-                {currentUser.role === "admin" && (
-                  <Link to="/admin">Admin Panel</Link>
-                )}
-                <button onClick={handleLogout} className="logout-link">
-                  Logout
-                </button>
-              </div>
+              {isDropdownOpen && (
+                <div className="dropdown-menu">
+                  <Link to="/profile">My Profile</Link>
+                  <Link to="/orders">My Orders</Link>
+                  {currentUser.role === "admin" && (
+                    <Link to="/admin">Admin Panel</Link>
+                  )}
+                  <button onClick={handleLogout} className="logout-link">
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
             <div className="auth-links">
