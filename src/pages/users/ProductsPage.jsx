@@ -79,7 +79,7 @@ function ProductsPage() {
 
         <div className="products-grid">
           {currentProducts.map((product) => (
-            <div key={product.id} className="product-card">
+            <div key={product.id} className="product-card1">
               <div className="product-image-container">
                 <img
                   src={product.image}
@@ -90,7 +90,7 @@ function ProductsPage() {
               <div className="product-info">
                 <Link to={`/product/${product.id}`} className="product-link">
                   <h3 className="product-name">{product.name}</h3>
-                  <p className="product-description">{product.description}</p>
+                  <p className="product-description1">{product.description}</p>
                   <div className="product-details">
                     <span className="product-price">${product.price}</span>
                     <span className="product-category">

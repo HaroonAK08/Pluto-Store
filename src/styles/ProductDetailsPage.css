@@ -75,12 +75,6 @@
   gap: 1rem;
 }
 
-.spec-item {
-  background-color: #f7fafc;
-  padding: 0.75rem;
-  border-radius: 6px;
-}
-
 .spec-label {
   font-weight: 600;
   color: #4a5568;

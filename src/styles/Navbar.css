@@ -1,11 +1,28 @@
+/* FONT IMPORT */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Montserrat:wght@400;500&display=swap");
+
+:root {
+  --space-black: #0a0a15;
+  --space-deep-blue: #0e1428;
+  --space-purple: #3c1361;
+  --space-accent: #7e3bdc;
+  --space-highlight: #00ccff;
+  --space-dust: #2e4482;
+  --glass-bg: rgba(14, 20, 40, 0.6);
+  --glass-blur: blur(12px);
+}
+
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
+  font-family: "Orbitron", sans-serif;
 }
 
 .navbar-container {
@@ -19,10 +36,16 @@
 }
 
 .navbar-logo a {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
-  color: #333;
+  color: var(--space-highlight);
+  text-shadow: 0 0 8px var(--space-highlight);
   text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo a:hover {
+  transform: scale(1.05);
 }
 
 .navbar-links {
@@ -31,15 +54,17 @@
 }
 
 .navbar-links a {
-  color: #555;
+  color: #d0d0ff;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
-  transition: color 0.3s ease;
+  font-family: "Montserrat", sans-serif;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .navbar-links a:hover {
-  color: #4a69bd;
+  color: var(--space-accent);
+  text-shadow: 0 0 5px var(--space-accent);
 }
 
 .navbar-auth {
@@ -65,11 +90,14 @@
   height: 36px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--space-highlight);
+  box-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
 }
 
 .user-name {
   font-weight: 500;
-  color: #333;
+  color: #e0e0ff;
+  font-family: "Montserrat", sans-serif;
 }
 
 .dropdown-menu {
@@ -77,12 +105,14 @@
   top: 45px;
   right: 0;
   width: 180px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(126, 59, 220, 0.4);
   padding: 10px 0;
   display: none;
   flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .user-menu:hover .dropdown-menu {
@@ -92,20 +122,20 @@
 .dropdown-menu a,
 .dropdown-menu button {
   padding: 10px 15px;
-  color: #555;
-  text-decoration: none;
+  color: #d0d0ff;
   background: none;
   border: none;
   text-align: left;
   font-size: 14px;
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .dropdown-menu a:hover,
 .dropdown-menu button:hover {
-  background-color: #f8f9fa;
-  color: #4a69bd;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--space-accent);
 }
 
 .auth-links {
@@ -115,41 +145,55 @@
 
 .login-link,
 .register-link {
-  text-decoration: none;
   font-weight: 500;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .login-link {
-  color: #4a69bd;
+  color: var(--space-highlight);
+}
+
+.login-link:hover {
+  color: var(--space-accent);
+  text-shadow: 0 0 6px var(--space-accent);
 }
 
 .register-link {
-  background-color: #4a69bd;
+  background: linear-gradient(
+    135deg,
+    var(--space-accent),
+    var(--space-highlight)
+  );
   color: white;
   padding: 8px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 6px;
+  box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .register-link:hover {
-  background-color: #3a559d;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.8);
 }
 
 .logout-link {
-  color: #e74c3c;
+  color: #ff6b6b;
 }
 
 .cart-icon {
   position: relative;
   display: flex;
   align-items: center;
-  color: #333;
+  color: #d0d0ff;
   text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .cart-icon:hover {
-  color: #007bff;
+  color: var(--space-highlight);
+  text-shadow: 0 0 6px var(--space-highlight);
 }
 
 .cart-count {
@@ -166,4 +210,5 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 6px #ff4444;
 }

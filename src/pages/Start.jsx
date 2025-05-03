@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import '../styles/Start.css';
+import { Link } from "react-router-dom";
+import "../styles/Start.css";
 
 const Index = () => {
   return (
@@ -9,13 +9,13 @@ const Index = () => {
       <div className="shape shape-2"></div>
       <div className="shape shape-3"></div>
       <div className="shape shape-4"></div>
-      
-      <div className="start-content">
-      <h1 className="start-title">Welcome to PlutoX</h1>
-      <p className="start-description">
-  Discover premium products and unbeatable deals with PlutoX – curated collections tailored to your lifestyle.
-</p>
 
+      <div className="start-content">
+        <h1 className="start-title">Welcome to PlutoX</h1>
+        <p className="start-description">
+          Discover premium products and unbeatable deals with PlutoX – curated
+          collections tailored to your lifestyle.
+        </p>
 
         <div className="start-actions">
           <div className="login-options">
