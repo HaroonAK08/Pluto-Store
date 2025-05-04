@@ -9,7 +9,7 @@
 .admin-section-header h2 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #2c3e50;
+  color: black;
   margin: 0;
 }
 
@@ -52,7 +52,7 @@
 
 .admin-table th {
   background-color: #f8f9fa;
-  color: #34495e;
+  color: black;
   font-weight: 600;
   text-align: left;
   padding: 16px;
@@ -63,12 +63,13 @@
 .admin-table td {
   padding: 16px;
   border-bottom: 1px solid #ecf0f1;
-  color: #2c3e50;
+  color: black;
   font-size: 0.95rem;
 }
 
 .admin-table tr:last-child td {
   border-bottom: none;
+  color: black;
 }
 
 .admin-table tr:hover {
@@ -362,7 +363,7 @@
   .settings-container {
     flex-direction: column;
   }
-  
+
   .settings-tabs {
     width: 100%;
     flex-direction: row;
@@ -371,14 +372,14 @@
     border-right: none;
     border-bottom: 1px solid #ecf0f1;
   }
-  
+
   .settings-tab {
     padding: 8px 16px;
     white-space: nowrap;
   }
-  
+
   .settings-tab.active {
     border-right: none;
     border-bottom: 2px solid #3498db;
   }
-} 
+}

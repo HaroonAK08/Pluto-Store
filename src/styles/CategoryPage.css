@@ -15,7 +15,7 @@
   overflow: hidden;
 }
 
-.category-overlay {
+.category-overlay1 {
   position: absolute;
   top: 0;
   left: 0;
@@ -29,7 +29,7 @@
   color: var(--text-white);
 }
 
-.category-overlay h1 {
+.category-overlay1 h1 {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
@@ -63,7 +63,9 @@
   box-shadow: var(--shadow-sm);
 }
 
-.loading, .error, .not-found {
+.loading,
+.error,
+.not-found {
   text-align: center;
   padding: 3rem;
   font-size: 1.2rem;
@@ -78,8 +80,8 @@
   .category-banner {
     height: 200px;
   }
-  
+
   .category-overlay h1 {
     font-size: 1.8rem;
   }
-} 
+}

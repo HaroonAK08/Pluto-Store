@@ -1,12 +1,38 @@
 /* Hero Section Styles */
 .hero-section {
   display: flex;
-  background-color: var(--bg-white);
-  border-radius: var(--radius-lg);
+  background: #101426;
+  border-radius: 2rem;
   overflow: hidden;
   margin-bottom: 3rem;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 0 32px #00cfff22, 0 2px 8px #0008;
   position: relative;
+  min-height: 420px;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 120%;
+  height: 140%;
+  background: radial-gradient(circle at 30% 40%, #00cfff33 0%, transparent 60%),
+    radial-gradient(circle at 80% 80%, #00cfff22 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+  animation: heroGlow 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+  0% {
+    opacity: 0.7;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(2px);
+  }
 }
 
 .hero-content {
@@ -15,21 +41,50 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
+/* --- Neon Animated Gradient Title --- */
 .hero-title {
   font-size: 3rem;
   font-weight: 800;
-  color: var(--text-dark);
+  background: linear-gradient(270deg, #00cfff, #00fff0, #00cfff, #005b7f);
+  background-size: 200% 200%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
   margin: 0 0 1rem;
   line-height: 1.2;
+  letter-spacing: -1px;
+  animation: shimmer 3s linear infinite, neonPulse 2.5s infinite alternate;
+  text-shadow: 0 0 16px #00cfff99, 0 0 32px #00cfff33;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes neonPulse {
+  0% {
+    text-shadow: 0 0 8px #00cfff99, 0 0 24px #00cfff33;
+  }
+  100% {
+    text-shadow: 0 0 24px #00cfffcc, 0 0 48px #00cfff44;
+  }
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
-  color: var(--text-light);
+  color: #e0f7fa;
   margin-bottom: 2rem;
   max-width: 80%;
+  text-shadow: 0 0 8px #00cfff22;
 }
 
 .hero-cta {
@@ -39,40 +94,73 @@
 
 .cta-button {
   padding: 0.875rem 1.75rem;
-  border-radius: var(--radius-md);
-  font-weight: 600;
+  border-radius: 2rem;
+  font-weight: 700;
   text-decoration: none;
-  transition: var(--transition);
+  transition: 0.25s all cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
+  font-size: 1.1rem;
+  box-shadow: 0 0 12px #00cfff33;
+  border: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.cta-button:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(0, 207, 255, 0.25);
+  border-radius: 100%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: width 0.5s, height 0.5s, opacity 0.5s;
+}
+
+.cta-button:active:after {
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transition: 0s;
 }
 
 .cta-button.primary {
-  background-color: var(--primary-color);
-  color: var(--text-white);
+  background: linear-gradient(90deg, #00cfff 60%, #005b7f 100%);
+  color: #fff;
+  box-shadow: 0 0 16px #00cfff66, 0 2px 8px #0008;
+  border: 2px solid #00cfff;
 }
 
 .cta-button.secondary {
-  background-color: transparent;
-  color: var(--text-dark);
-  border: 2px solid var(--text-dark);
+  background: transparent;
+  color: #00cfff;
+  border: 2px solid #00cfff;
 }
 
-.cta-button.primary:hover {
-  background-color: #2a75ee;
-  transform: translateY(-2px);
-}
-
+.cta-button.primary:hover,
 .cta-button.secondary:hover {
-  background-color: var(--text-dark);
-  color: var(--text-white);
-  transform: translateY(-2px);
+  background: #00cfff;
+  color: #101426;
+  box-shadow: 0 0 32px #00cfff99, 0 2px 8px #000a;
+  transform: translateY(-2px) scale(1.04);
 }
 
 .hero-image-container {
   flex: 1;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
+/* --- Animated Neon Border for Hero Image --- */
 .hero-image {
   width: 100%;
   max-width: 550px;
@@ -82,14 +170,46 @@
   background-position: center;
   width: 100%;
   height: 100%;
+  border-radius: 2rem;
+  box-shadow: 0 0 48px #00cfff55, 0 0 0 8px #101426, 0 2px 8px #0008;
+  border: 2px solid #00cfff44;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.4s;
 }
 
+.hero-image::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 2.2rem;
+  z-index: 2;
+  pointer-events: none;
+  border: 3px solid;
+  border-image: linear-gradient(120deg, #00cfff, #00fff0, #005b7f, #00cfff) 1;
+  animation: borderGlow 4s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.hero-image-container:hover .hero-image {
+  box-shadow: 0 0 64px #00cfffcc, 0 0 0 8px #101426, 0 2px 8px #000a;
+}
+
+/* --- Discount Badge with Pulsing Ring --- */
 .discount-badge {
   position: absolute;
   top: 2rem;
   right: 2rem;
-  background-color: var(--secondary-color);
-  color: var(--text-white);
+  background: linear-gradient(135deg, #00cfff 60%, #005b7f 100%);
+  color: #fff;
   border-radius: 50%;
   width: 100px;
   height: 100px;
@@ -97,29 +217,43 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  animation: pulse 2s infinite;
+  animation: pulse 2s infinite, badgeGlow 3s infinite alternate;
+  box-shadow: 0 0 32px #00cfff99, 0 2px 8px #0008;
+  border: 2px solid #00cfff;
+  z-index: 2;
+}
+
+.discount-badge::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 4px solid #00cfff88;
+  box-shadow: 0 0 32px #00cfff99;
+  opacity: 0.7;
+  animation: badgePulse 2s infinite;
+  z-index: 1;
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 0 16px #00cfff66, 0 2px 8px #0008;
+  }
+  100% {
+    box-shadow: 0 0 48px #00cfffcc, 0 2px 8px #000a;
+  }
 }
 
 .discount-text {
   font-size: 1.5rem;
   font-weight: 800;
+  text-shadow: 0 0 8px #fff, 0 0 16px #00cfff;
 }
 
 .discount-subtext {
   font-size: 0.75rem;
   opacity: 0.9;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
-  }
+  text-shadow: 0 0 4px #00cfff99;
 }
 
 /* Animations */

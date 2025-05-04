@@ -66,7 +66,7 @@ function CategoriesPage() {
                   alt={category.name}
                   className="category-image"
                 />
-                <div className="category-overlay"></div>
+                {/* <div className="category-overlay"></div> */}
               </div>
               <div className="category-info-large">
                 <h3 className="category-name">{category.name}</h3>

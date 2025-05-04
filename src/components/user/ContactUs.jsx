@@ -1,16 +1,19 @@
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react"; // make sure to import useState
 const ContactUs = () => {
   const styles = {
     container: {
       minHeight: "100vh",
-      backgroundColor: "#f3f4f6",
+      background:
+        "linear-gradient(to bottom, var(--space-black), var(--space-deep-blue))",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       padding: "1rem",
+      backgroundImage:
+        "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')",
     },
     card: {
       width: "100%",
@@ -81,7 +84,6 @@ const ContactUs = () => {
       boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
       transition: "background-color 0.3s",
     },
-    
   };
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -89,7 +91,7 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-  
+
     setTimeout(() => {
       toast.success("Message sent successfully!");
       setIsSubmitting(false);
@@ -108,7 +110,11 @@ const ContactUs = () => {
             </div>
             <div>
               <label style={styles.label}>Email</label>
-              <input type="email" placeholder="Your email" style={styles.input} />
+              <input
+                type="email"
+                placeholder="Your email"
+                style={styles.input}
+              />
             </div>
           </div>
 
@@ -119,43 +125,46 @@ const ContactUs = () => {
 
           <div style={styles.fullWidth}>
             <label style={styles.label}>Message</label>
-            <textarea rows="5" placeholder="Your message..." style={styles.textarea}></textarea>
+            <textarea
+              rows="5"
+              placeholder="Your message..."
+              style={styles.textarea}
+            ></textarea>
           </div>
 
           <div style={styles.fullWidth}>
-          <button
-  type="submit"
-  style={{
-    ...styles.button,
-    backgroundColor: isSubmitting ? "#3b82f6" : "#2563eb",
-    cursor: isSubmitting ? "not-allowed" : "pointer",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }}
-  disabled={isSubmitting}
->
-  {isSubmitting ? (
-    <>
-      <span
-        className="spinner"
-        style={{
-          width: "16px",
-          height: "16px",
-          border: "2px solid white",
-          borderTop: "2px solid transparent",
-          borderRadius: "50%",
-          marginRight: "8px",
-          animation: "spin 1s linear infinite",
-        }}
-      ></span>
-      Sending...
-    </>
-  ) : (
-    "Send Message"
-  )}
-</button>
-
+            <button
+              type="submit"
+              style={{
+                ...styles.button,
+                backgroundColor: isSubmitting ? "#3b82f6" : "#2563eb",
+                cursor: isSubmitting ? "not-allowed" : "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? (
+                <>
+                  <span
+                    className="spinner"
+                    style={{
+                      width: "16px",
+                      height: "16px",
+                      border: "2px solid white",
+                      borderTop: "2px solid transparent",
+                      borderRadius: "50%",
+                      marginRight: "8px",
+                      animation: "spin 1s linear infinite",
+                    }}
+                  ></span>
+                  Sending...
+                </>
+              ) : (
+                "Send Message"
+              )}
+            </button>
           </div>
         </form>
       </div>

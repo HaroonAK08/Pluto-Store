@@ -52,11 +52,13 @@ function UserManagement() {
           <tbody>
             {users.map((user) => (
               <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>{new Date(user.lastLogin).toLocaleDateString()}</td>
+                <td style={{ color: "black" }}>{user.id}</td>
+                <td style={{ color: "black" }}>{user.name}</td>
+                <td style={{ color: "black" }}>{user.email}</td>
+                <td style={{ color: "black" }}>{user.role}</td>
+                <td style={{ color: "black" }}>
+                  {new Date(user.lastLogin).toLocaleDateString()}
+                </td>
                 <td>
                   <button
                     className="table-btn delete"

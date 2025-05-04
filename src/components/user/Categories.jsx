@@ -38,7 +38,6 @@ const Categories = () => {
 
     fetchCategories();
   }, []);
-  console.log("categories", categories);
   return (
     <div className="categories-section">
       <div className="section-header">

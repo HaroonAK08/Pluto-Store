@@ -88,11 +88,11 @@ function ProductManagement() {
           <tbody>
             {products.map((product) => (
               <tr key={product.id}>
-                <td>{product.id}</td>
-                <td>{product.name}</td>
-                <td>{product.categoryName}</td>
-                <td>${product.price}</td>
-                <td>{product.quantity}</td>
+                <td style={{ color: "black" }}>{product.id}</td>
+                <td style={{ color: "black" }}>{product.name}</td>
+                <td style={{ color: "black" }}>{product.categoryName}</td>
+                <td style={{ color: "black" }}>${product.price}</td>
+                <td style={{ color: "black" }}>{product.quantity}</td>
                 <td>
                   <button
                     className="table-btn delete"
