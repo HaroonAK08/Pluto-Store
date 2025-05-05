@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Cloudinary } from '@cloudinary/url-gen';
+import { auto } from '@cloudinary/url-gen/actions/resize';
+import { autoGravity } from '@cloudinary/url-gen/qualifiers/gravity';
+import { AdvancedImage } from '@cloudinary/react';
+
 
 function AddProductModal({ isOpen, onClose, onAdd }) {
+  const cld = new Cloudinary({ cloud: { cloudName: 'dygrkfa4w' } });
+  const [image, setImage] = useState("");
   const [form, setForm] = useState({
     name: "",
     categoryId: "",
@@ -75,6 +82,25 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
     }
   };
 
+  const uploadImage = (files) => {
+    const formData = new FormData();
+
+    formData.append("file", files[0]);
+    formData.append("upload_preset", "ml_default");
+    fetch(
+      "https://api.cloudinary.com/v1_1/dygrkfa4w/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setImage(data.secure_url);
+      });
+  };
+
+
   return (
     <div className="modal-overlay">
       <div className="modal product-modal">
@@ -144,6 +170,12 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
                 required
               />
             </div>
+
+            <input type="file" onChange={(e) => uploadImage(e.target.files)} />
+            <img
+                src={image}
+                alt="uploaded image"
+            />
 
             <div className="form-group full-width">
               <label>Description *</label>

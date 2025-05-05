@@ -15,7 +15,7 @@ function OrderManagement() {
   const handleStatusChange = async (orderId, newStatus) => {
     try {
       // Update the status in the database
-      const response = await fetch(`/api/orders/${orderId}`, {
+      const response = await fetch(`http://localhost:3002/orders/${orderId}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +37,7 @@ function OrderManagement() {
       console.error("Error updating order status:", error);
     }
   };
-
+console.log("orders", orders);
   return (
     <div className="admin-page">
       <h1>Order Management</h1>

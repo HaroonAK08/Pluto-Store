@@ -4,29 +4,11 @@ import AddToCartModal from "./AddToCartModal";
 import "../../styles/ProductList.css";
 
 const ProductList = ({ products }) => {
-  const [sortOption, setSortOption] = useState("featured");
   const [viewMode, setViewMode] = useState("grid");
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Sort products based on selected option
-  const sortedProducts = [...products].sort((a, b) => {
-    switch (sortOption) {
-      case "price-low":
-        return a.price - b.price;
-      case "price-high":
-        return b.price - a.price;
-      case "rating":
-        return b.rating - a.rating;
-      case "name-asc":
-        return a.name.localeCompare(b.name);
-      case "name-desc":
-        return b.name.localeCompare(a.name);
-      case "featured":
-      default:
-        return 0; // Keep original order
-    }
-  });
+  const sortedProducts = [...products]
 
   const handleAddToCartClick = (product) => {
     setSelectedProduct(product);
@@ -34,7 +16,6 @@ const ProductList = ({ products }) => {
   };
 
   const handleAddToCart = (product, quantity) => {
-    // TODO: Implement actual add to cart functionality
     console.log("Adding to cart:", product, "Quantity:", quantity);
   };
 
@@ -44,38 +25,6 @@ const ProductList = ({ products }) => {
         <div className="product-count">
           {products.length} {products.length === 1 ? "Product" : "Products"}{" "}
           found
-        </div>
-
-        <div className="sorting-controls">
-          <label htmlFor="sort-select">Sort by:</label>
-          <select
-            id="sort-select"
-            value={sortOption}
-            onChange={(e) => setSortOption(e.target.value)}
-            className="sort-select"
-          >
-            <option value="featured">Featured</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-            <option value="rating">Highest Rated</option>
-            <option value="name-asc">Name: A to Z</option>
-            <option value="name-desc">Name: Z to A</option>
-          </select>
-
-          <div className="view-toggles">
-            <button
-              className={`view-toggle ${viewMode === "grid" ? "active" : ""}`}
-              onClick={() => setViewMode("grid")}
-            >
-              <span className="view-icon">⊞</span>
-            </button>
-            <button
-              className={`view-toggle ${viewMode === "list" ? "active" : ""}`}
-              onClick={() => setViewMode("list")}
-            >
-              <span className="view-icon">≡</span>
-            </button>
-          </div>
         </div>
       </div>
 

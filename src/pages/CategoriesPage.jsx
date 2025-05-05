@@ -10,28 +10,7 @@ function CategoriesPage() {
       try {
         const response = await fetch("/db.json");
         const data = await response.json();
-
-        // Process products to get unique categories with counts and descriptions
-        const categoryMap = data.products.reduce((acc, product) => {
-          if (!acc[product.categoryId]) {
-            acc[product.categoryId] = {
-              id: product.categoryId,
-              name: product.categoryName,
-              count: 1,
-              image: product.image,
-              description: `Explore our collection of ${product.categoryName.toLowerCase()} products.`,
-            };
-          } else {
-            acc[product.categoryId].count++;
-          }
-          return acc;
-        }, {});
-
-        // Convert map to array and sort by id
-        const categoriesArray = Object.values(categoryMap).sort(
-          (a, b) => a.id - b.id
-        );
-        setCategories(categoriesArray);
+        setCategories(data?.categories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -39,7 +18,6 @@ function CategoriesPage() {
 
     fetchCategories();
   }, []);
-  console.log("categories", categories);
 
   return (
     <div className="categories-page">

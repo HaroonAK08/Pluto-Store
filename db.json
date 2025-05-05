@@ -21,7 +21,7 @@
   ],
   "orders": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "date": "2024-03-15T10:30:00Z",
       "status": "completed",
@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 1,
       "date": "2024-03-10T15:45:00Z",
       "status": "pending",
@@ -68,7 +68,7 @@
       "totalAmount": 129,
       "paymentMethod": "Cash on Delivery",
       "orderNumber": "ORD-1746211446241",
-      "status": "Pending",
+      "status": "completed",
       "paymentStatus": "Pending",
       "date": "2025-05-02T18:44:06.241Z",
       "items": [
@@ -100,6 +100,50 @@
           "price": 249,
           "quantity": 1,
           "totalPrice": 249
+        }
+      ]
+    },
+    {
+      "id": "8996",
+      "name": "Haroon",
+      "address": "House # 01",
+      "phone": "03232323",
+      "email": "user@gmail.com",
+      "totalAmount": 460000,
+      "paymentMethod": "Cash on Delivery",
+      "orderNumber": "ORD-1746432792718",
+      "status": "processing",
+      "paymentStatus": "Pending",
+      "date": "2025-05-05T08:13:12.718Z",
+      "items": [
+        {
+          "id": "35",
+          "name": "Rolls-Royce Phantom",
+          "price": 460000,
+          "quantity": 1,
+          "totalPrice": 460000
+        }
+      ]
+    },
+    {
+      "id": "8204",
+      "name": "Haroon",
+      "address": "jhjkh",
+      "phone": "0326747287",
+      "email": "user@gmail.com",
+      "totalAmount": 199,
+      "paymentMethod": "Cash on Delivery",
+      "orderNumber": "ORD-1746450215189",
+      "status": "processing",
+      "paymentStatus": "Pending",
+      "date": "2025-05-05T13:03:35.189Z",
+      "items": [
+        {
+          "id": "11",
+          "name": "Smart Coffee Maker",
+          "price": 199,
+          "quantity": 1,
+          "totalPrice": 199
         }
       ]
     }
@@ -599,6 +643,63 @@
         "pages": "256",
         "language": "English"
       }
+    },
+    {
+      "id": "35",
+      "name": "Rolls-Royce Phantom",
+      "description": "Ultra-luxury sedan with handcrafted interior and V12 engine",
+      "price": 460000,
+      "quantity": 2,
+      "image": "https://images.unsplash.com/photo-1599912027611-484b9fc447af?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "categoryId": 8,
+      "categoryName": "Luxury Cars",
+      "specifications": {
+        "engine": "6.75L V12",
+        "color": "Midnight Black",
+        "features": [
+          "Handcrafted Interior",
+          "Starlight Headliner",
+          "Adaptive Air Suspension"
+        ]
+      }
+    },
+    {
+      "id": "36",
+      "name": "Lamborghini Aventador",
+      "description": "High-performance supercar with aggressive styling and V12 engine",
+      "price": 517000,
+      "quantity": 3,
+      "image": "https://images.unsplash.com/photo-1633650915549-f69463863651?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "categoryId": 8,
+      "categoryName": "Luxury Cars",
+      "specifications": {
+        "engine": "6.5L V12",
+        "color": "Verde Mantis",
+        "features": [
+          "Carbon Fiber Body",
+          "Scissor Doors",
+          "All-Wheel Drive"
+        ]
+      }
+    },
+    {
+      "id": "37",
+      "name": "Bentley Continental GT",
+      "description": "Luxury grand tourer with refined styling and a powerful W12 engine",
+      "price": 240000,
+      "quantity": 4,
+      "image": "https://images.unsplash.com/photo-1576668273906-4c087ac1dc85?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "categoryId": 8,
+      "categoryName": "Luxury Cars",
+      "specifications": {
+        "engine": "6.0L W12",
+        "color": "Silver Frost",
+        "features": [
+          "Premium Leather Interior",
+          "Infotainment System",
+          "All-Wheel Drive"
+        ]
+      }
     }
   ],
   "categories": [
@@ -650,6 +751,13 @@
       "description": "Fiction, non-fiction, and educational books",
       "image": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",
       "slug": "books"
+    },
+    {
+      "id": "8",
+      "name": "Cars",
+      "description": "Explore a variety of cars including sedans, SUVs, and sports cars",
+      "image": "https://images.unsplash.com/photo-1485291571150-772bcfc10da5?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "slug": "cars"
     }
   ]
 }
