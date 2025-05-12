@@ -9,6 +9,8 @@ import { AdvancedImage } from '@cloudinary/react';
 function AddProductModal({ isOpen, onClose, onAdd }) {
   const cld = new Cloudinary({ cloud: { cloudName: 'dygrkfa4w' } });
   const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const [form, setForm] = useState({
     name: "",
     categoryId: "",
@@ -40,20 +42,23 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
 
   if (!isOpen) return null;
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "categoryId") {
-      const selectedCategory = categories.find((cat) => cat.id === value);
-      setForm((prev) => ({
-        ...prev,
-        categoryId: value,
-        categoryName: selectedCategory ? selectedCategory.name : "",
-      }));
-    } else {
-      setForm((prev) => ({ ...prev, [name]: value }));
-    }
-  };
+const handleChange = (e) => {
+  const { name, value } = e.target;
 
+  const numericFields = ["quantity", "price", "categoryId"];
+  const parsedValue = numericFields.includes(name) ? Number(value) : value;
+
+  if (name === "categoryId") {
+    const selectedCategory = categories.find((cat) => cat.id === value);
+    setForm((prev) => ({
+      ...prev,
+      categoryId: parsedValue,
+      categoryName: selectedCategory ? selectedCategory.name : "",
+    }));
+  } else {
+    setForm((prev) => ({ ...prev, [name]: parsedValue }));
+  }
+};
   const handleSpecificationChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({
@@ -65,23 +70,33 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!form.name || !form.categoryId || !form.price || !form.quantity) {
-      setError("Name, category, price, and quantity are required.");
-      return;
-    }
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const response = await axios.post("http://localhost:3002/products", form);
-      onAdd(response.data);
-      onClose();
-    } catch (error) {
-      console.error("Error adding product:", error);
-      setError("Failed to add product. Please try again.");
-    }
-  };
+  if (loading) return; 
+  setLoading(true);
 
+  if (!form.name || !form.categoryId || !form.price || !form.quantity) {
+    setError("Name, category, price, and quantity are required.");
+    setLoading(false);
+    return;
+  }
+
+  try {
+    const productData = {
+      ...form,
+      image,
+    };
+    const response = await axios.post("http://localhost:3002/products", productData);
+    onAdd(response.data);
+    onClose();
+  } catch (error) {
+    console.error("Error adding product:", error);
+    setError("Failed to add product. Please try again.");
+  } finally {
+    setLoading(false); 
+  }
+};
   const uploadImage = (files) => {
     const formData = new FormData();
 
@@ -229,9 +244,9 @@ function AddProductModal({ isOpen, onClose, onAdd }) {
             <button type="button" className="cancel-button" onClick={onClose}>
               Cancel
             </button>
-            <button type="submit" className="submit-button">
-              Add Product
-            </button>
+<button type="submit" className="submit-button" disabled={loading}>
+  {loading ? "Adding..." : "Add Product"}
+</button>
           </div>
         </form>
       </div>

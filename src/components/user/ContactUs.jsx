@@ -12,8 +12,7 @@ const ContactUs = () => {
       alignItems: "center",
       justifyContent: "center",
       padding: "1rem",
-      backgroundImage:
-        "url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')",
+
     },
     card: {
       width: "100%",
