@@ -6,9 +6,9 @@ function OrderManagement() {
 
   useEffect(() => {
     // Fetch orders from db.json
-    fetch("http://localhost:3002/db.json")
+    fetch("http://localhost:3002/orders")
       .then((response) => response.json())
-      .then((data) => setOrders(data.orders))
+      .then((data) => setOrders(data))
       .catch((error) => console.error("Error fetching orders:", error));
   }, []);
 

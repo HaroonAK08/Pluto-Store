@@ -8,11 +8,11 @@ const Categories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:3002/db.json");
+        const response = await fetch("http://localhost:3002/products");
         const data = await response.json();
 
         // Process products to get unique categories with counts
-        const categoryMap = data.products.reduce((acc, product) => {
+        const categoryMap = data.reduce((acc, product) => {
           if (!acc[product.categoryId]) {
             acc[product.categoryId] = {
               id: product.categoryId,

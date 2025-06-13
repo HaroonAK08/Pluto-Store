@@ -10,9 +10,9 @@ const FeaturedProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:3002/db.json");
+        const response = await fetch("http://localhost:3002/products");
         const data = await response.json();
-        setProducts(data.products.slice(0, 6));
+        setProducts(data.slice(0, 6));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching products:", error);

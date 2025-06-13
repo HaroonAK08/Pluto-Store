@@ -10,29 +10,32 @@ function AdminPanel() {
     revenue: 0,
   });
 
+  async function fetchStats() {
+    const [usersResponse, productsResponse, ordersResponse] = await Promise.all(
+      [
+        fetch("http://localhost:3002/users"),
+        fetch("http://localhost:3002/products"),
+        fetch("http://localhost:3002/orders"),
+      ]
+    );
+    const users = await usersResponse.json();
+    const products = await productsResponse.json();
+    const orders = await ordersResponse.json();
+    const revenue = orders.reduce(
+      (total, order) => total + order.totalPrice,
+      0
+    );
+    setStats({
+      users: users.length,
+      products: products.length,
+      orders: orders.length,
+      revenue: revenue,
+    });
+  }
+
   useEffect(() => {
     // Fetch data from db.json
-    fetch("http://localhost:3002/db.json")
-      .then((response) => response.json())
-      .then((data) => {
-        // Calculate stats
-        const totalUsers = data.users.length;
-        const totalProducts = data.products.length;
-        const totalOrders = data.orders.length;
-        const totalRevenue = data.orders.reduce(
-          (sum, order) => sum + order.totalAmount || order.total,
-          0
-        );
-        console.log("data", data.orders);
-
-        setStats({
-          users: totalUsers,
-          products: totalProducts,
-          orders: totalOrders,
-          revenue: totalRevenue,
-        });
-      })
-      .catch((error) => console.error("Error fetching stats:", error));
+    fetchStats();
   }, []);
   console.log("stats", stats);
   return (

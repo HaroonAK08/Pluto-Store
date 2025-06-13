@@ -7,9 +7,9 @@ function UserManagement() {
 
   useEffect(() => {
     // Fetch users from db.json
-    fetch("http://localhost:3002/db.json")
+    fetch("http://localhost:3002/users")
       .then((response) => response.json())
-      .then((data) => setUsers(data.users))
+      .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 

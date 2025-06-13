@@ -8,9 +8,9 @@ function CategoriesPage() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("http://localhost:3002/db.json");
+        const response = await fetch("http://localhost:3002/categories");
         const data = await response.json();
-        setCategories(data?.categories);
+        setCategories(data);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }

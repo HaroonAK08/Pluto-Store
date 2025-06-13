@@ -16,10 +16,10 @@ function ProductDetailsPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch("http://localhost:3002/db.json");
+        const response = await fetch("http://localhost:3002/products");
         const data = await response.json();
 
-        const foundProduct = data.products.find((p) => p.id === id);
+        const foundProduct = data.find((p) => p.id === id);
         setProduct(foundProduct);
         setLoading(false);
       } catch (error) {
