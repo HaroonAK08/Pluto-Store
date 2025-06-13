@@ -22,7 +22,7 @@ function AdminPanel() {
     const products = await productsResponse.json();
     const orders = await ordersResponse.json();
     const revenue = orders.reduce(
-      (total, order) => total + order.totalPrice,
+      (sum, order) => sum + order.totalAmount || order.total,
       0
     );
     setStats({
