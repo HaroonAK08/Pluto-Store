@@ -8,7 +8,7 @@ function CategoriesPage() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const response = await fetch("/db.json");
+        const response = await fetch("http://localhost:3002/db.json");
         const data = await response.json();
         setCategories(data?.categories);
       } catch (error) {

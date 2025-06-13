@@ -6,7 +6,7 @@ function OrderManagement() {
 
   useEffect(() => {
     // Fetch orders from db.json
-    fetch("/db.json")
+    fetch("http://localhost:3002/db.json")
       .then((response) => response.json())
       .then((data) => setOrders(data.orders))
       .catch((error) => console.error("Error fetching orders:", error));
@@ -37,7 +37,7 @@ function OrderManagement() {
       console.error("Error updating order status:", error);
     }
   };
-console.log("orders", orders);
+  console.log("orders", orders);
   return (
     <div className="admin-page">
       <h1>Order Management</h1>

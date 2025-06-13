@@ -16,7 +16,7 @@ function ProductDetailsPage() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch("/db.json");
+        const response = await fetch("http://localhost:3002/db.json");
         const data = await response.json();
 
         const foundProduct = data.products.find((p) => p.id === id);

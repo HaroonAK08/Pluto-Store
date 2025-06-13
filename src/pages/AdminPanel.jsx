@@ -12,7 +12,7 @@ function AdminPanel() {
 
   useEffect(() => {
     // Fetch data from db.json
-    fetch("/db.json")
+    fetch("http://localhost:3002/db.json")
       .then((response) => response.json())
       .then((data) => {
         // Calculate stats

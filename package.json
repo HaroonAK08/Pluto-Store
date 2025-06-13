@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch db.json --port 3002",
-    "dev:all": "concurrently \"npm run dev\" \"npm run server\""
+    "backend": "concurrently \"npm run dev\" \"npm run server\""
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.1",
