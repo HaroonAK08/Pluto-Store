@@ -1,19 +1,19 @@
-import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import Navbar from './user/Navbar';
-import '../styles/MainLayout.css';
+import { Outlet } from "react-router-dom";
+import Navbar from "./user/Navbar";
+import { useAuth } from "../context/AuthContext";
+import "../styles/MainLayout.css";
 
 function MainLayout() {
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  
+  const { isAuthenticated } = useAuth();
+
   return (
     <>
       {isAuthenticated && <Navbar />}
-      <main className={`main-content ${!isAuthenticated ? 'no-navbar' : ''}`}>
+      <main className={`main-content ${!isAuthenticated ? "no-navbar" : ""}`}>
         <Outlet />
       </main>
     </>
   );
 }
 
-export default MainLayout; 
+export default MainLayout;

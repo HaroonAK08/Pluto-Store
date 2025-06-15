@@ -1,16 +1,14 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { login } from "../store/authSlice";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 function UserLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,14 +36,8 @@ function UserLoginForm() {
           lastLogin: new Date().toISOString(),
         };
 
-        // Dispatch login action to Redux store
-        dispatch(login(userForAuth));
-
-        // Save user to localStorage
-        localStorage.setItem("currentUser", JSON.stringify(userForAuth));
-
-        // Navigate to home page
-        navigate("/home");
+        // Use the login function from AuthContext
+        login(userForAuth, user.role === "admin");
       } else {
         setError("Invalid email or password");
       }

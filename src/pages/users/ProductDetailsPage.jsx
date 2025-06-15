@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../../store/cartSlice";
 import AddToCartModal from "../../components/user/AddToCartModal";
 import "../../styles/ProductDetailsPage.css";
 
 function ProductDetailsPage() {
   const { id } = useParams();
-  const dispatch = useDispatch();
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
@@ -41,12 +38,27 @@ function ProductDetailsPage() {
 
   const handleModalAddToCart = (quantity) => {
     if (product) {
-      dispatch(
-        addToCart({
+      // Get existing cart from localStorage
+      const existingCart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+      // Check if product already exists in cart
+      const existingItemIndex = existingCart.findIndex(
+        (item) => item.product.id === product.id
+      );
+
+      if (existingItemIndex >= 0) {
+        // Update quantity if product exists
+        existingCart[existingItemIndex].quantity += quantity;
+      } else {
+        // Add new item if product doesn't exist
+        existingCart.push({
           product: product,
           quantity: quantity,
-        })
-      );
+        });
+      }
+
+      // Save updated cart to localStorage
+      localStorage.setItem("cart", JSON.stringify(existingCart));
       setIsModalOpen(false);
     }
   };

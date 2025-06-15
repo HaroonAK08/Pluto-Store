@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "../../styles/Orders.css";
 
 function Orders() {
-  const { currentUser } = useSelector((state) => state.auth);
+  const currentUser = JSON.parse(localStorage.getItem("user"));
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -1,17 +1,14 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate, Outlet } from 'react-router-dom';
-import Sidebar from './Sidebar';
-import { logout } from '../../store/authSlice';
-import '../../styles/AdminLayout.css';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import Sidebar from "./Sidebar";
+import "../../styles/AdminLayout.css";
 
 function AdminLayout() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
+  const { logout } = useAuth();
+
   const handleLogout = () => {
-    dispatch(logout());
-    navigate('/login');
+    logout();
   };
 
   return (
@@ -37,4 +34,4 @@ function AdminLayout() {
   );
 }
 
-export default AdminLayout; 
+export default AdminLayout;

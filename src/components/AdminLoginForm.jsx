@@ -1,16 +1,13 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { login } from "../store/authSlice";
 import axios from "axios";
+import { useAuth } from "../context/AuthContext";
 
 function AdminLoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,16 +37,8 @@ function AdminLoginForm() {
             lastLogin: new Date().toISOString(),
           };
 
-          // Dispatch login action to Redux store
-          dispatch(login(userForAuth));
-
-          // Save user to localStorage
-          localStorage.setItem("currentUser", JSON.stringify(userForAuth));
-
-          // Add a slight delay to ensure state is updated before navigation
-          setTimeout(() => {
-            navigate("/admin");
-          }, 100);
+          // Use the login function from AuthContext
+          login(userForAuth, true);
         } else {
           setError("Access denied. Only admin users can login here.");
         }

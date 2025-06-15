@@ -1,4 +1,5 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useRoutes } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
 import Home from "./pages/Home";
 import Start from "./pages/Start";
 import Login from "./pages/Login";
@@ -9,7 +10,6 @@ import MainLayout from "./components/MainLayout";
 import UserManagement from "./pages/admin/UserManagement";
 import ProductManagement from "./pages/admin/ProductManagement";
 import OrderManagement from "./pages/admin/OrderManagement";
-import AdminSettings from "./pages/admin/AdminSettings";
 import CategoryPage from "./pages/CategoryPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import ProductsPage from "./pages/users/ProductsPage";
@@ -18,157 +18,161 @@ import AboutPage from "./pages/users/AboutPage";
 import ContactPage from "./pages/users/ContactPage";
 import Cart from "./pages/Cart";
 import OrdersPage from "./pages/OrdersPage";
+
 // Auth guard HOC for protected routes
-const RequireAuth = ({ children, isAuthenticated, redirectTo = "/login" }) => {
+const RequireAuth = ({ children, redirectTo = "/login" }) => {
+  const { isAuthenticated } = useAuth();
   return isAuthenticated ? children : <Navigate to={redirectTo} />;
 };
 
 // Admin guard HOC for admin routes
-const RequireAdmin = ({ children, user, isAuthenticated }) => {
+const RequireAdmin = ({ children }) => {
+  const { isAuthenticated, isAdmin } = useAuth();
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
   }
-
-  return user?.role === "admin" ? children : <Navigate to="/home" />;
+  return isAdmin ? children : <Navigate to="/home" />;
 };
 
-// Main routes configuration
-const getRoutes = (isAuthenticated, user) => [
-  {
-    path: "/",
-    element: <MainLayout />,
-    children: [
-      {
-        path: "",
-        element: <Start />,
-      },
-      {
-        path: "products",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <ProductsPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "product/:id",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <ProductDetailsPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "about",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <AboutPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "contact",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <ContactPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "cart",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <Cart />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "login",
-        element: isAuthenticated ? (
-          user?.role === "admin" ? (
-            <Navigate to="/admin" />
-          ) : (
-            <Navigate to="/home" />
-          )
-        ) : (
-          <Login />
-        ),
-      },
-      {
-        path: "register",
-        element: isAuthenticated ? <Navigate to="/home" /> : <Register />,
-      },
-      {
-        path: "home",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <Home />
-          </RequireAuth>
-        ),
-      },
-      // Category routes
-      {
-        path: "categories",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <CategoriesPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "category/:categoryId",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <CategoryPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "orders",
-        element: (
-          <RequireAuth isAuthenticated={isAuthenticated}>
-            <OrdersPage />
-          </RequireAuth>
-        ),
-      },
-    ],
-  },
-  // Admin routes with nested children
-  {
-    path: "/admin",
-    element: (
-      <RequireAdmin isAuthenticated={isAuthenticated} user={user}>
-        <AdminLayout />
-      </RequireAdmin>
-    ),
-    children: [
-      {
-        path: "", // Default admin route (dashboard)
-        element: <AdminPanel />,
-      },
-      {
-        path: "users",
-        element: <UserManagement />,
-      },
-      {
-        path: "products",
-        element: <ProductManagement />,
-      },
-      {
-        path: "orders",
-        element: <OrderManagement />,
-      },
-      {
-        path: "settings",
-        element: <AdminSettings />,
-      },
-    ],
-  },
-  // Catch-all route
-  {
-    path: "*",
-    element: <Navigate to="/" />,
-  },
-];
+// Routes component that uses hooks
+function AppRoutes() {
+  const { isAuthenticated, isAdmin } = useAuth();
 
-export default getRoutes;
+  const routes = [
+    {
+      path: "/",
+      element: <MainLayout />,
+      children: [
+        {
+          path: "",
+          element: <Start />,
+        },
+        {
+          path: "products",
+          element: (
+            <RequireAuth>
+              <ProductsPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "product/:id",
+          element: (
+            <RequireAuth>
+              <ProductDetailsPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "about",
+          element: (
+            <RequireAuth>
+              <AboutPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "contact",
+          element: (
+            <RequireAuth>
+              <ContactPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "cart",
+          element: (
+            <RequireAuth>
+              <Cart />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "login",
+          element: isAuthenticated ? (
+            isAdmin ? (
+              <Navigate to="/admin" />
+            ) : (
+              <Navigate to="/home" />
+            )
+          ) : (
+            <Login />
+          ),
+        },
+        {
+          path: "register",
+          element: isAuthenticated ? <Navigate to="/home" /> : <Register />,
+        },
+        {
+          path: "home",
+          element: (
+            <RequireAuth>
+              <Home />
+            </RequireAuth>
+          ),
+        },
+        // Category routes
+        {
+          path: "categories",
+          element: (
+            <RequireAuth>
+              <CategoriesPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "category/:categoryId",
+          element: (
+            <RequireAuth>
+              <CategoryPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "orders",
+          element: (
+            <RequireAuth>
+              <OrdersPage />
+            </RequireAuth>
+          ),
+        },
+      ],
+    },
+    // Admin routes with nested children
+    {
+      path: "/admin",
+      element: (
+        <RequireAdmin>
+          <AdminLayout />
+        </RequireAdmin>
+      ),
+      children: [
+        {
+          path: "", // Default admin route (dashboard)
+          element: <AdminPanel />,
+        },
+        {
+          path: "users",
+          element: <UserManagement />,
+        },
+        {
+          path: "products",
+          element: <ProductManagement />,
+        },
+        {
+          path: "orders",
+          element: <OrderManagement />,
+        },
+      ],
+    },
+    // Catch-all route
+    {
+      path: "*",
+      element: <Navigate to="/" />,
+    },
+  ];
+
+  return useRoutes(routes);
+}
+
+export default AppRoutes;

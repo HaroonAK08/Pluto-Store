@@ -1,17 +1,16 @@
-import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../store/authSlice";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { useCart } from "../../context/CartContext";
 import "../../styles/Navbar.css";
 
 function Navbar() {
-  const { currentUser } = useSelector((state) => state.auth);
-  const { totalQuantity } = useSelector((state) => state.cart);
-  const dispatch = useDispatch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { currentUser, logout } = useAuth();
+  const { totalQuantity } = useCart();
 
   const handleLogout = () => {
-    dispatch(logout());
+    logout();
   };
 
   const toggleDropdown = () => {

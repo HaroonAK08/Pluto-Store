@@ -1,23 +1,57 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity } from "../store/cartSlice";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import CheckoutModal from "../components/CheckoutModal";
 import "../styles/Cart.css";
 
 function Cart() {
-  const dispatch = useDispatch();
-  const { items, totalAmount } = useSelector((state) => state.cart);
+  const [cartItems, setCartItems] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
   const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
 
-  const handleQuantityChange = (id, newQuantity) => {
+  useEffect(() => {
+    // Load cart from localStorage
+    const savedCart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCartItems(savedCart);
+
+    // Calculate total amount
+    const total = savedCart.reduce((sum, item) => {
+      return sum + item.product.price * item.quantity;
+    }, 0);
+    setTotalAmount(total);
+  }, []);
+
+  const handleQuantityChange = (productId, newQuantity) => {
     if (newQuantity > 0) {
-      dispatch(updateQuantity({ id, quantity: newQuantity }));
+      const updatedCart = cartItems.map((item) => {
+        if (item.product.id === productId) {
+          return { ...item, quantity: newQuantity };
+        }
+        return item;
+      });
+
+      setCartItems(updatedCart);
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      // Recalculate total
+      const total = updatedCart.reduce((sum, item) => {
+        return sum + item.product.price * item.quantity;
+      }, 0);
+      setTotalAmount(total);
     }
   };
 
-  const handleRemoveItem = (id) => {
-    dispatch(removeFromCart(id));
+  const handleRemoveItem = (productId) => {
+    const updatedCart = cartItems.filter(
+      (item) => item.product.id !== productId
+    );
+    setCartItems(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+    // Recalculate total
+    const total = updatedCart.reduce((sum, item) => {
+      return sum + item.product.price * item.quantity;
+    }, 0);
+    setTotalAmount(total);
   };
 
   const handleCheckout = () => {
@@ -33,12 +67,12 @@ function Cart() {
         },
         body: JSON.stringify({
           ...orderData,
-          items: items.map((item) => ({
-            id: item.id,
-            name: item.name,
-            price: item.price,
+          items: cartItems.map((item) => ({
+            id: item.product.id,
+            name: item.product.name,
+            price: item.product.price,
             quantity: item.quantity,
-            totalPrice: item.totalPrice,
+            totalPrice: item.product.price * item.quantity,
           })),
         }),
       });
@@ -55,7 +89,9 @@ function Cart() {
         });
 
         // Clear the cart after successful order
-        items.forEach((item) => dispatch(removeFromCart(item.id)));
+        setCartItems([]);
+        localStorage.setItem("cart", "[]");
+        setTotalAmount(0);
         setIsCheckoutModalOpen(false);
 
         // Show order confirmed message after 1 second
@@ -85,7 +121,7 @@ function Cart() {
     }
   };
 
-  if (items.length === 0) {
+  if (cartItems.length === 0) {
     return (
       <div className="cart-container">
         <h1>Shopping Cart</h1>
@@ -102,18 +138,20 @@ function Cart() {
       <h1>Shopping Cart</h1>
       <div className="cart-content">
         <div className="cart-items">
-          {items.map((item) => (
-            <div key={item.id} className="cart-item">
+          {cartItems.map((item) => (
+            <div key={item.product.id} className="cart-item">
               <div className="item-image">
-                <img src={item.image} alt={item.name} />
+                <img src={item.product.image} alt={item.product.name} />
               </div>
               <div className="item-details">
-                <h3>{item.name}</h3>
-                <div className="item-price">${item.price.toFixed(2)}</div>
+                <h3>{item.product.name}</h3>
+                <div className="item-price">
+                  ${item.product.price.toFixed(2)}
+                </div>
                 <div className="item-quantity">
                   <button
                     onClick={() =>
-                      handleQuantityChange(item.id, item.quantity - 1)
+                      handleQuantityChange(item.product.id, item.quantity - 1)
                     }
                     className="quantity-btn"
                   >
@@ -122,7 +160,7 @@ function Cart() {
                   <span>{item.quantity}</span>
                   <button
                     onClick={() =>
-                      handleQuantityChange(item.id, item.quantity + 1)
+                      handleQuantityChange(item.product.id, item.quantity + 1)
                     }
                     className="quantity-btn"
                   >
@@ -130,12 +168,12 @@ function Cart() {
                   </button>
                 </div>
                 <div className="item-total">
-                  Total: ${item.totalPrice.toFixed(2)}
+                  Total: ${(item.product.price * item.quantity).toFixed(2)}
                 </div>
               </div>
               <button
                 className="remove-item"
-                onClick={() => handleRemoveItem(item.id)}
+                onClick={() => handleRemoveItem(item.product.id)}
               >
                 Remove
               </button>
