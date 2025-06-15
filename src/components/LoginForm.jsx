@@ -1,8 +1,9 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 
-function AdminLoginForm() {
+function LoginForm({ isAdmin = false }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,23 +26,24 @@ function AdminLoginForm() {
       );
 
       if (user) {
-        // Check if user has admin role
-        if (user.role === "admin") {
-          // Create user object without password for security
-          const userForAuth = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role,
-            profilePicture: user.profilePicture,
-            lastLogin: new Date().toISOString(),
-          };
-
-          // Use the login function from AuthContext
-          login(userForAuth, true);
-        } else {
+        // For admin login, check if user has admin role
+        if (isAdmin && user.role !== "admin") {
           setError("Access denied. Only admin users can login here.");
+          return;
         }
+
+        // Create user object without password for security
+        const userForAuth = {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          profilePicture: user.profilePicture,
+          lastLogin: new Date().toISOString(),
+        };
+
+        // Use the login function from AuthContext
+        login(userForAuth, user.role === "admin");
       } else {
         setError("Invalid email or password");
       }
@@ -55,19 +57,23 @@ function AdminLoginForm() {
 
   return (
     <div>
-      <h2 className="login-title">Admin Login</h2>
-      <p className="login-subtitle">Sign in with your admin credentials</p>
+      <h2 className="login-title">{isAdmin ? "Admin Login" : "User Login"}</h2>
+      <p className="login-subtitle">
+        {isAdmin
+          ? "Sign in with your admin credentials"
+          : "Sign in to your account"}
+      </p>
 
       {error && <div className="error-message">{error}</div>}
 
       <form className="login-form" onSubmit={handleSubmit}>
         <div className="input-group stacked">
           <div>
-            <label htmlFor="admin-email" className="sr-only">
+            <label htmlFor="email" className="sr-only">
               Email address
             </label>
             <input
-              id="admin-email"
+              id="email"
               name="email"
               type="email"
               autoComplete="email"
@@ -79,11 +85,11 @@ function AdminLoginForm() {
             />
           </div>
           <div>
-            <label htmlFor="admin-password" className="sr-only">
+            <label htmlFor="password" className="sr-only">
               Password
             </label>
             <input
-              id="admin-password"
+              id="password"
               name="password"
               type="password"
               autoComplete="current-password"
@@ -96,34 +102,25 @@ function AdminLoginForm() {
           </div>
         </div>
 
-        {/* <div className="remember-forgot">
-          <div className="remember-me">
-            <input
-              id="admin-remember-me"
-              name="remember-me"
-              type="checkbox"
-              className="checkbox"
-            />
-            <label htmlFor="admin-remember-me" className="checkbox-label">
-              Remember me
-            </label>
-          </div>
-
-          <div>
-            <a href="#" className="forgot-password">
-              Forgot your password?
-            </a>
-          </div>
-        </div> */}
-
         <div>
           <button type="submit" className="signin-button" disabled={loading}>
             {loading ? "Signing in..." : "Sign in"}
           </button>
         </div>
+
+        {!isAdmin && (
+          <div className="register-link-container">
+            <p className="register-text">
+              Don't have an account?{" "}
+              <Link to="/register" className="register-link">
+                Register here
+              </Link>
+            </p>
+          </div>
+        )}
       </form>
     </div>
   );
 }
 
-export default AdminLoginForm;
+export default LoginForm;

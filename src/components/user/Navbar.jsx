@@ -65,8 +65,6 @@ function Navbar() {
               </div>
               {isDropdownOpen && (
                 <div className="dropdown-menu">
-                  <Link to="/profile">My Profile</Link>
-                  <Link to="/orders">My Orders</Link>
                   {currentUser.role === "admin" && (
                     <Link to="/admin">Admin Panel</Link>
                   )}

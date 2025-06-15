@@ -7,7 +7,6 @@ import Register from "./pages/Register";
 import AdminPanel from "./pages/AdminPanel";
 import AdminLayout from "./components/admin/AdminLayout";
 import MainLayout from "./components/MainLayout";
-import UserManagement from "./pages/admin/UserManagement";
 import ProductManagement from "./pages/admin/ProductManagement";
 import OrderManagement from "./pages/admin/OrderManagement";
 import CategoryPage from "./pages/CategoryPage";
@@ -17,7 +16,6 @@ import ProductDetailsPage from "./pages/users/ProductDetailsPage";
 import AboutPage from "./pages/users/AboutPage";
 import ContactPage from "./pages/users/ContactPage";
 import Cart from "./pages/Cart";
-import OrdersPage from "./pages/OrdersPage";
 
 // Auth guard HOC for protected routes
 const RequireAuth = ({ children, redirectTo = "/login" }) => {
@@ -128,14 +126,6 @@ function AppRoutes() {
             </RequireAuth>
           ),
         },
-        {
-          path: "orders",
-          element: (
-            <RequireAuth>
-              <OrdersPage />
-            </RequireAuth>
-          ),
-        },
       ],
     },
     // Admin routes with nested children
@@ -150,10 +140,6 @@ function AppRoutes() {
         {
           path: "", // Default admin route (dashboard)
           element: <AdminPanel />,
-        },
-        {
-          path: "users",
-          element: <UserManagement />,
         },
         {
           path: "products",

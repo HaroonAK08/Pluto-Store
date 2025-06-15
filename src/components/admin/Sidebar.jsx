@@ -12,11 +12,6 @@ function Sidebar() {
       path: "/admin",
     },
     {
-      title: "Users",
-      icon: "👥",
-      path: "/admin/users",
-    },
-    {
       title: "Products",
       icon: "📦",
       path: "/admin/products",

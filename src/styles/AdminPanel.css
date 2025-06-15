@@ -76,7 +76,7 @@
   .admin-panel {
     padding: 1rem;
   }
-  
+
   .admin-content {
     grid-template-columns: 1fr;
   }
@@ -173,64 +173,8 @@
   color: #e74c3c;
 }
 
-.admin-recent-activity {
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  padding: 24px;
-}
-
-.admin-recent-activity h2 {
-  margin: 0 0 20px 0;
-  font-size: 1.2rem;
-  color: #2c3e50;
-}
-
-.admin-activity-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.admin-activity-item {
-  display: flex;
-  align-items: flex-start;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #ecf0f1;
-}
-
-.admin-activity-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.admin-activity-dot {
-  width: 10px;
-  height: 10px;
-  background-color: #3498db;
-  border-radius: 50%;
-  margin-top: 6px;
-  margin-right: 12px;
-}
-
-.admin-activity-content {
-  flex: 1;
-}
-
-.admin-activity-text {
-  margin: 0 0 4px 0;
-  font-size: 0.9rem;
-  color: #34495e;
-}
-
-.admin-activity-time {
-  margin: 0;
-  font-size: 0.8rem;
-  color: #7f8c8d;
-}
-
 @media (max-width: 768px) {
   .admin-stats-row {
     grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
   }
-} 
+}

@@ -100,43 +100,6 @@
   border-radius: 0 0 0.375rem 0.375rem;
 }
 
-.remember-forgot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
-
-.remember-me {
-  display: flex;
-  align-items: center;
-}
-
-.checkbox {
-  height: 1rem;
-  width: 1rem;
-  color: #6366f1;
-  border: 1px solid #d1d5db;
-  border-radius: 0.25rem;
-}
-
-.checkbox-label {
-  margin-left: 0.5rem;
-  font-size: 0.875rem;
-  color: #111827;
-}
-
-.forgot-password {
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #6366f1;
-  text-decoration: none;
-}
-
-.forgot-password:hover {
-  color: #4f46e5;
-}
-
 .signin-button {
   width: 100%;
   display: flex;
@@ -175,7 +138,6 @@
   text-decoration: none;
 }
 
-
 .error-message {
   color: #e53e3e;
   background-color: #fed7d7;
@@ -201,4 +163,4 @@
 
 .back-link:hover {
   color: #4f46e5;
-} 
+}
